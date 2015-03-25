@@ -5,6 +5,7 @@
     <title>『豪情』后台管理</title>
     <link rel="stylesheet" type="text/css" href="__CSS__/common.css"/>
     <link rel="stylesheet" type="text/css" href="__CSS__/main.css"/>
+    <script type='text/javascript' src='__PUBLIC__/js/jquery.min.js'></script>
 </head>
 <body>
 <div class="topbar-wrap white">
@@ -12,18 +13,14 @@
         <div class="topbar-logo-wrap clearfix">
             <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
-                <li><a href="" target="_blank">网站首页</a></li>
-                <li><a href="" target="_blank">网站首页</a></li>
-                <li><a href="" target="_blank">网站首页</a></li>
-                <li><a href="" target="_blank">网站首页</a></li>
+               <?php if(is_array($menueList["top"])): $i = 0; $__LIST__ = $menueList["top"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a class="on" href="<?php echo U($vo['model_action']);?>"><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+               
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
                 <li><a href="#">管理员</a></li>
-                <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
+                <li><a href="<?php echo U('Public/logout');?>">退出</a></li>
             </ul>
         </div>
     </div>
@@ -35,8 +32,8 @@
         </div>
         <div class="sidebar-content">
             <ul class="sidebar-list">
-                <li>
-                    <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
+                <li class="active">
+                    <a href="#" class="sidebar-item"><i class="icon-font">&#xe003;</i>常用操作</a>
                     <ul class="sub-menu">
                         <li><a href="design.html"><i class="icon-font">&#xe008;</i>作品管理</a></li>
                         <li><a href="design.html"><i class="icon-font">&#xe005;</i>博文管理</a></li>
@@ -47,8 +44,8 @@
                         <li><a href="design.html"><i class="icon-font">&#xe033;</i>广告管理</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
+                <li class="">
+                    <a href="#" class="sidebar-item"><i class="icon-font">&#xe018;</i>系统管理</a>
                     <ul class="sub-menu">
                         <li><a href="system.html"><i class="icon-font">&#xe017;</i>系统设置</a></li>
                         <li><a href="system.html"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
@@ -93,10 +90,7 @@
                     </li>
                     <li>
                         <label class="res-lab">PHP运行方式</label><span class="res-info">apache2handler</span>
-                    </li>
-                    <li>
-                        <label class="res-lab">静静设计-版本</label><span class="res-info">v-0.1</span>
-                    </li>
+                    </li>                   
                     <li>
                         <label class="res-lab">上传附件限制</label><span class="res-info">2M</span>
                     </li>
@@ -126,6 +120,21 @@
         </div>
     </div>
     <!--/main-->
+    
+    <script>
+    	$(".sub-menu").hide();
+    	$(".sidebar-list li.active .sub-menu").show();
+    	$(".sidebar-item").on('click',function(){
+    		if($(this).parent().attr('class') == "active"){
+    			$(this).parent().removeClass("active");
+    			$(this).next().hide();
+    		}else{
+    			$(this).parent().addClass("active");
+    			$(this).next().show();
+    		}
+    		
+    	});
+    </script>
 </div>
 </body>
 </html>
