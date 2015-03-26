@@ -1,0 +1,189 @@
+html,body {
+	font-size: 14px;
+	font-family:'微软雅黑',Tahoma,Geneva,sans-serif;
+	color: #323232;
+	background-color: #F9F9F9;
+}
+/* 容器 */
+.wrapper,.header,.content,.footer{ 
+	clear:both; 
+	overflow:hidden;
+}
+.fl{
+ display:block;
+ float:left;
+}
+.fr{
+ display:block;
+ float:right;
+}
+.clear{ 
+	clear:both;
+	 height:0px; 
+	 width:100%; 
+	 font-size:1px; 
+	 line-height:0px; 
+	 visibility:hidden; 
+	 overflow:hidden;
+ }
+.tal{
+   text-align:left; 
+}
+.tac{
+   text-align:center; 
+}
+.tar{
+   text-align:right; 
+}
+.show{
+ display:block;
+}
+.hide{
+ display:none;
+}
+/* 字体大小 */
+.F10{ font-size:10px;}
+.F11{ font-size:11px;}
+.F12{ font-size:12px;}
+.F13{ font-size:13px;}
+.F14{ font-size:14px;}
+.F16{ font-size:16px;}
+.F18{ font-size:18px;}
+/* 定义行高，LH 使用较少,主要定义line-height属性 */
+.LH1{ line-height:1px;}
+.LH10{ line-height:10px;}
+.LH15{ line-height:15px;}
+.LH18{ line-height:18px;}
+.LH20{ line-height:20px;}
+.LH25{ line-height:25px;}
+.LH30{ line-height:30px;}
+.LH35{ line-height:35px;}
+/* 定义H系列标签，覆盖H系列标签默认属性 */
+h1{ font-size:24px;}
+h2{ font-size:20px;}
+h3{ font-size:18px;}
+h4{ font-size:16px;}
+h5{ font-size:14px;}
+h6{ font-size:12px;}
+/* 鼠标样式 */
+.pointer{ cursor:pointer;}
+
+.text-muted {
+  color: #777;
+}
+.text-primary {
+  color: #337ab7;
+}
+a.text-primary:hover {
+  color: #286090;
+}
+.text-success {
+  color: #3c763d;
+}
+a.text-success:hover {
+  color: #2b542c;
+}
+.text-info {
+  color: #31708f;
+}
+a.text-info:hover {
+  color: #245269;
+}
+.text-warning {
+  color: #8a6d3b;
+}
+a.text-warning:hover {
+  color: #66512c;
+}
+.text-danger {
+  color: #a94442;
+}
+a.text-danger:hover {
+  color: #843534;
+}
+.bg-primary {
+  color: #fff;
+  background-color: #337ab7;
+}
+a.bg-primary:hover {
+  background-color: #286090;
+}
+.bg-success {
+  background-color: #dff0d8;
+}
+a.bg-success:hover {
+  background-color: #c1e2b3;
+}
+.bg-info {
+  background-color: #d9edf7;
+}
+a.bg-info:hover {
+  background-color: #afd9ee;
+}
+.bg-warning {
+  background-color: #fcf8e3;
+}
+a.bg-warning:hover {
+  background-color: #f7ecb5;
+}
+.bg-danger {
+  background-color: #f2dede;
+}
+a.bg-danger:hover {
+  background-color: #e4b9b9;
+}
+.input{
+	padding: 0px 12px;
+	border: 1px solid #ccc;
+}
+.input-350{
+  width:350px;
+  height:28px;
+  
+}
+.input-200{
+  width:200px;
+  height:25px;
+}
+.btn{
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	cursor:pointer;
+	width:50px;
+	height:25px;	
+	text-align: center;
+	border-radius: 4px;
+	display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+}
+.btn-main{
+	
+	background-color: #286090;
+    border-color: #204d74;
+    color: #fff;
+}
+.btn-success{
+	background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+}
+.btn-danger {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    color: #fff;
+}
+.select{
+  padding:5px 10px;
+}
+.textarea{
+  width:400px;
+  height:75px;
+  padding:10px;
+}

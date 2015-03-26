@@ -1,10 +1,8 @@
-<!doctype html>
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>『rj』后台管理</title>
-    <link href="__CSS__/reset.css" rel="stylesheet" type="text/css" />
-	<link href="__CSS__/common.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="__CSS__/admin_login.css"/>
 </head>
 <body>

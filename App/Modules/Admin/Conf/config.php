@@ -1,5 +1,5 @@
 <?php
-$theme = 'theme02';
+$theme = 'theme03';
 return array(
 	//'配置项'=>'配置值'
 		'DEFAULT_THEME' => $theme,
