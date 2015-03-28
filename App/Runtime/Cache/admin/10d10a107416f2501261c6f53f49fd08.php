@@ -18,13 +18,14 @@
 				</div>
 				<div class="menue fl">
 				       <ul class="menue-list">
-						  <?php if(is_array($menueList["top"])): $i = 0; $__LIST__ = $menueList["top"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="fl"><a href="<?php echo U($vo['model_action']);?>"><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+						  <?php if(is_array($menueList["top"])): $i = 0; $__LIST__ = $menueList["top"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="fl"><a href="<?php echo U($vo['modul_action']);?>"><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 						
 					   </ul>
 				</div>
 				<div class="top-info fr">
 					<ul class="top-info-list">
-					     <li><a href="">管理员</a></li>
+					     <li><a href="###"><?php echo session("admin.unick");?></a></li>
+					    
 						 <li><a href="<?php echo U('Public/logout');?>">退出</a></li>
 					</ul>
 				</div>
@@ -32,26 +33,17 @@
 			<div class="content">
 			   <div class="cont-left fl">
 					<ul class="menue-left-list">
-					   <li><a href="##" class="side-menue-list">首页</a>
+					<?php if(is_array($leftMenue)): $i = 0; $__LIST__ = $leftMenue;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="##" class="side-menue-list"><?php echo ($vo["title"]); ?></a>
 					        <ul class="menue-sub-list hide">
-							    <li><a href="" class="active">首页</a>
-								<li><a href="">首页</a>
-								<li><a href="">首页</a>
+					           <?php if(is_array($vo["sub"])): $i = 0; $__LIST__ = $vo["sub"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?><li><a href="" class="active"><?php echo ($vo2["title"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
+								
 							</ul>
-					   </li>
-					   <li>
-					   <a href="##" class="side-menue-list">内容</a>
-					      <ul class="menue-sub-list hide">
-							    <li><a href="">首页</a>
-								<li><a href="">首页</a>
-								<li><a href="">首页</a>
-							</ul>
-					   </li>
+					   </li><?php endforeach; endif; else: echo "" ;endif; ?>
 					</ul>
 			   </div>
-			   <div class="cont-right fl">
+			   <div class="cont-right">
 			      <p class="position">当前位置：<a href="">首页</a> >><a href="">首页</a></p>
-				  <div class="main">
+				 <!--  <div class="main">
 					 <div class="main-title">
 					  <form><input type="text" name="" class="input input-200"><input type="submit" value="搜索" class="btn btn-main"></form>
 					 </div>
@@ -108,7 +100,7 @@
 					   </table>
 					 </div>
 				  </div>
-			   </div>
+			   </div>--> 
 			</div>
 			<div class="footer">
 			  <p>制作单位：北大青鸟</p>

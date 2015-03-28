@@ -1,6 +1,5 @@
 body{
- background-color:#e9eaf7;
- color:#fff;
+ background-color:#fff;
  font-size:14px;
 }
 table{
@@ -22,25 +21,20 @@ text-align: center;
 }
 .header{
  height:50px;
- padding:10px 10px 0px;
- background-color:#323335;
+ background-color:#1a1a1a;
   margin:auto;
 }
 .content{
-	min-width:720px;
-	width:1440px;
-    margin:auto;
+	min-height:720px;
 }
 .footer{
  height:50px;
- width:1410px;
  text-align:center;
- background-color:#323335;
- margin:auto;
- padding-top:30px;
+ border: 1px solid #dedede;
 }
 .logo{
  width:250px;
+ color:#fff;
 }
 
 .menue-list{
@@ -53,15 +47,15 @@ text-align: center;
 
 }
 .menue-list li a{
- padding:10px 25px;
+ padding:0px 25px;
  color:#fff;
- font-size:24px;
- font-weight:900;
- line-height:40px;
- height:40px;
+ font-size:20px;
+ line-height:50px;
+ height:50px;
+ display:inline-block;
 }
 .menue-list li a:hover,.menue-left-list li a{
- background-color:#a95959;
+ background-color:#343434;
 }
 .top-info .top-info-list li{
   display:block;
@@ -72,38 +66,34 @@ text-align: center;
   color:#fff;
 }
 .active{
-  background-color:#a95959;
+  background-color:#033b70;
 }
 
 .cont-left{
   width:180px;
-  background-color:#84838a;
+  background-color:#f2f2f2;
   min-height:750px;
-  margin:15px;
-  
 }
 .menue-left-list li{
  display:block;
  width:180px;
- border:1px solid #5e5d62;
- margin-bottom:-1px;
- margin-left:-1px;
- margin-right:-1px;
+ border:2px solid #e5e5e5;
+ margin-bottom:-2px;
+ margin-left:-2px;
+ margin-right:-2px;
 }
 .menue-left-list li a{
-  color:#fff;
+  color:#333333;
   font-size:18px;
   line-height:34px;
-  height:34px;
-  background-color:#302d31;
+  height:40px;
+  background-color:#f2f2f2;
   display:inline-block;
   width:155px;
   padding-left:25px;
   letter-spacing:8px;
-  font-weight:900;
 }
 .menue-sub-list li a{
-   background-color:#84838a;
    padding-left:35px;
    width:145px;
    font-size:16px;
@@ -112,9 +102,8 @@ text-align: center;
   background-color:#a95959;
 }
 .cont-right{
-  margin:15px 0px;
-  background-color:#84838a;
-  width:1200px;
+  border-left: 1px solid #cccccc;
+  margin-left:182px;
 }
 .main{
   min-height:730px;

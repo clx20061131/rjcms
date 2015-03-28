@@ -19,14 +19,15 @@
 				<div class="menue fl">
 				       <ul class="menue-list">
 						  <volist name="menueList.top" id="vo">
-			                 <li class="fl"><a href="{:U($vo['model_action'])}">{$vo.title}</a></li>
+			                 <li class="fl"><a href="{:U($vo['modul_action'])}">{$vo.title}</a></li>
 			               </volist>
 						
 					   </ul>
 				</div>
 				<div class="top-info fr">
 					<ul class="top-info-list">
-					     <li><a href="">管理员</a></li>
+					     <li><a href="###"><?php echo session("admin.unick");?></a></li>
+					    
 						 <li><a href="{:U('Public/logout')}">退出</a></li>
 					</ul>
 				</div>
@@ -34,26 +35,22 @@
 			<div class="content">
 			   <div class="cont-left fl">
 					<ul class="menue-left-list">
-					   <li><a href="##" class="side-menue-list">首页</a>
+					<volist name="leftMenue" id="vo">
+					 
+					   <li><a href="##" class="side-menue-list">{$vo.title}</a>
 					        <ul class="menue-sub-list hide">
-							    <li><a href="" class="active">首页</a>
-								<li><a href="">首页</a>
-								<li><a href="">首页</a>
+					           <volist name="vo.sub" id="vo2">
+							    <li><a href="" class="active">{$vo2.title}</a>
+							    </volist>
+								
 							</ul>
 					   </li>
-					   <li>
-					   <a href="##" class="side-menue-list">内容</a>
-					      <ul class="menue-sub-list hide">
-							    <li><a href="">首页</a>
-								<li><a href="">首页</a>
-								<li><a href="">首页</a>
-							</ul>
-					   </li>
+					   </volist>
 					</ul>
 			   </div>
-			   <div class="cont-right fl">
+			   <div class="cont-right">
 			      <p class="position">当前位置：<a href="">首页</a> >><a href="">首页</a></p>
-				  <div class="main">
+				 <!--  <div class="main">
 					 <div class="main-title">
 					  <form><input type="text" name="" class="input input-200"><input type="submit" value="搜索" class="btn btn-main"></form>
 					 </div>
@@ -110,7 +107,7 @@
 					   </table>
 					 </div>
 				  </div>
-			   </div>
+			   </div>--> 
 			</div>
 			<div class="footer">
 			  <p>制作单位：北大青鸟</p>

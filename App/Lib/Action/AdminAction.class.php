@@ -9,10 +9,22 @@ class AdminAction extends Action {
   	  	
   	  	$this->error("请先登录",U('public/login'));
   	  }else{
+  	  	//当前菜单
+  	      	$m = MODULE_NAME;
+		  	$a = ACTION_NAME;
+		  	$Menue = D('Menue');
+		  	$rst = $Menue -> actionMenue($m,$a);
+		  	$topId = $rst['topAction'];
+		  	$leftId = $rst['leftAction'];
+		  	$this->assign('leftId',$leftId);
   	  	//生成菜单
   	  	  $menueList = $this->buildMenue();
+  	  
   	  	  $this->assign('menueList',$menueList);
-  	  	//生成权限
+  	  	  $this->assign('leftMenue',$menueList['top'][$topId]['sub']);
+  	  	  
+  	  	// dump($menueList['top'][$topId]['sub']);exit;
+  	 
   	  }
   	
   }
@@ -29,9 +41,9 @@ class AdminAction extends Action {
    */
   private function _actionMenue(){
   	
-  	$m = MODULE_NAME;
-  	$a = ACTION_NAME;
-  	
+  
+  	$this->assign('topMenue',$rst['topAction']);
+  	$this->assign('leftMenue',$rst['leftAction']);
   }
 
 }
