@@ -1,5 +1,9 @@
 <?php
-// 本类由系统自动生成，仅供测试用途
+/**
+ * 
+ * @author clx
+ *
+ */
 class IndexAction extends AdminAction {
 	
 	public function _initialize(){
@@ -7,7 +11,8 @@ class IndexAction extends AdminAction {
 		parent::_initialize();
 	}
     public function index(){
-     
+    	
+    	$this->assign('systemInfo',$this->getSystemInfo());
     	$this->display();
     }
 }

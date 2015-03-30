@@ -18,7 +18,7 @@
 				</div>
 				<div class="menue fl">
 				       <ul class="menue-list">
-						  <?php if(is_array($menueList["top"])): $i = 0; $__LIST__ = $menueList["top"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="fl"><a href="<?php echo U($vo['modul_action']);?>"><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+						  <?php if(is_array($menueList["top"])): $i = 0; $__LIST__ = $menueList["top"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="fl"><a href="<?php echo U($vo['modul_action']);?>" <?php if($vo['id']==$topId)echo 'class="active"';?> ><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 						
 					   </ul>
 				</div>
@@ -35,72 +35,27 @@
 					<ul class="menue-left-list">
 					<?php if(is_array($leftMenue)): $i = 0; $__LIST__ = $leftMenue;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="##" class="side-menue-list"><?php echo ($vo["title"]); ?></a>
 					        <ul class="menue-sub-list hide">
-					           <?php if(is_array($vo["sub"])): $i = 0; $__LIST__ = $vo["sub"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?><li><a href="" class="active"><?php echo ($vo2["title"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
+					           <?php if(is_array($vo["sub"])): $i = 0; $__LIST__ = $vo["sub"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?><li><a href="<?php echo U($vo2['modul_action']);?>" <?php if($leftId == $vo.id) echo 'class="active"';?> ><?php echo ($vo2["title"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
 								
 							</ul>
 					   </li><?php endforeach; endif; else: echo "" ;endif; ?>
 					</ul>
 			   </div>
 			   <div class="cont-right">
+			    
 			      <p class="position">当前位置：<a href="">首页</a> >><a href="">首页</a></p>
-				 <!--  <div class="main">
-					 <div class="main-title">
-					  <form><input type="text" name="" class="input input-200"><input type="submit" value="搜索" class="btn btn-main"></form>
-					 </div>
-					 <div class="main-content">
-					   <table class="table-list">
-					   <thead>
-							<tr>
-							  <td>标题</td>
-							  <td>简介</td>
-							  <td>操作</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-							  <td>12312</td>
-							  <td>12312</td>
-							  <td>12321</td>
-							</tr>
-						</tbody>
-					   </table>
-					   <table class="table-detail">
-					   <thead>
-							<tr >
-							  <td colspan="3">标题</td>
-							 
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-							  <td>标题</td>
-							  <td class="tal"><input type="text" name="title" value="" class="input input-350"><span class="tip-info">请输入密码</span></td>							  
-							</tr>
-							<tr>
-							  <td>多选</td>
-							  <td class="tal"><input type="checkbox" name="title" value="" class="input"> A <input type="checkbox" name="title" value="" class="input"> B <span class="tip-info">请输入密码</span></td>							  
-							</tr>
-							<tr>
-							  <td>单选</td>
-							  <td class="tal"><input type="radio" name="title" value="" class="input"> A <input type="radio" name="title" value="" class="input"> B <span class="tip-info">请输入密码</span></td>							  
-							</tr>
-							<tr>
-							  <td>下拉框</td>
-							  <td class="tal"><select class="select"><option value="">1<option value="">2</select> <span class="tip-info">请输入密码</span></td>							  
-							</tr>
-							<tr>
-							  <td>textarea</td>
-							  <td class="tal"><textarea class="textarea"></textarea> <span class="tip-info">请输入密码</span></td>							  
-							</tr>
-							<tr>
-							  <td colspan="2"><input type="submit" class="btn btn-main" value="提交"></td>
-							 							  
-							</tr>
-						</tbody>
-					   </table>
-					 </div>
-				  </div>
-			   </div>--> 
+				    <div class="main">
+					   
+   <div class="main-content">
+	    <h3>系统基本信息</h3>
+	    <ul style="padding-left:25px;">
+	     <li>操作系统：<?php echo ($systemInfo["os"]); ?></li>
+	     <li>运行环境：<?php echo ($systemInfo["apacheversion"]); ?></li>
+	     <li>上传附件限制：<?php echo ($systemInfo["maxuploadfile"]); ?></li>
+	     <li>现在时间：<?php echo date('Y-m-d H:i:s')?></li>
+	    </ul>
+   </div>			
+				    </div>
 			</div>
 			<div class="footer">
 			  <p>制作单位：北大青鸟</p>

@@ -22,21 +22,26 @@ class MenueModel extends Model {
 	 		
 	 	//}else{
 	 		
-	 		$tempArr = $returnArr = array();
-	 		$tempArr['top'] = $this->where('level = 1 and disabled = 0')->order('listorder asc')->select();
-	 		foreach($tempArr['top'] as $k =>$v){
-	 		     $returnArr['top'][$v['id']] = $v;
-	 			 $tempArr['top'][$k]['sub'] = $this->where('level = 2 and disabled = 0 and parent = '.$v['id'])->order('listorder asc')->select();
-	 		
-	 			foreach($tempArr['top'][$k]['sub'] as $k2 =>$v2){
-	 				$returnArr['top'][$v['id']]['sub'][$v2['id']] = $v2;
-	 				$returnArr['top'][$v['id']]['sub'][$v2['id']]['sub'] = $tempArr['top'][$k]['sub']['sub'] = $this->where('level = 3 and disabled = 0 and parent = '.$v2['id'])->order('listorder asc')->select();
-	 			}
-	 		}
+	 	    $returnArr = $this->getMenueList();
 	 		session('menue',$returnArr);
 	 		return  $returnArr;
 	 //	}
 	 	
+	 }
+	 public function getMenueList($topId=0){
+	 	
+	 	$tempArr = $returnArr = array();
+	 	$tempArr['top'] = $this->where('level = 1 and disabled = 0')->order('listorder asc')->select();
+	 	foreach($tempArr['top'] as $k =>$v){
+	 		$returnArr['top'][$v['id']] = $v;
+	 		$tempArr['top'][$k]['sub'] = $this->where('level = 2 and disabled = 0 and parent = '.$v['id'])->order('listorder asc')->select();
+	 	
+	 		foreach($tempArr['top'][$k]['sub'] as $k2 =>$v2){
+	 			$returnArr['top'][$v['id']]['sub'][$v2['id']] = $v2;
+	 			$returnArr['top'][$v['id']]['sub'][$v2['id']]['sub'] = $tempArr['top'][$k]['sub']['sub'] = $this->where('level = 3 and disabled = 0 and parent = '.$v2['id'])->order('listorder asc')->select();
+	 		}
+	 	}
+	 	return  $returnArr;
 	 }
 	 /**
 	  * 生成权限

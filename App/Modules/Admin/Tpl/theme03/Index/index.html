@@ -1,2 +1,10 @@
 <layout name="layout" />
-  
+   <div class="main-content">
+	    <h3>系统基本信息</h3>
+	    <ul style="padding-left:25px;">
+	     <li>操作系统：{$systemInfo.os}</li>
+	     <li>运行环境：{$systemInfo.apacheversion}</li>
+	     <li>上传附件限制：{$systemInfo.maxuploadfile}</li>
+	     <li>现在时间：<?php echo date('Y-m-d H:i:s')?></li>
+	    </ul>
+   </div>			

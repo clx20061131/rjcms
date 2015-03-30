@@ -2,6 +2,9 @@ body{
  background-color:#fff;
  font-size:14px;
 }
+a:link, a:visited {
+	color:#428bca;
+}
 table{
 
  width:100%;
@@ -11,13 +14,14 @@ table{
 }
 table thead{
   font-weight:900;
-  background-color:#474a4b;
+  background: url("../images/tab-thbg.png") repeat-x scroll 0 bottom #f9f9f9;
 }
 td{
 border: 1px solid #dedede;
 height: 35px;
 line-height: 35px;
-text-align: center;
+text-align: left;
+padding-left:5px;
 }
 .header{
  height:50px;
@@ -109,13 +113,28 @@ text-align: center;
   min-height:730px;
 }
 .position{
-  line-height:24px;
-  height:24px;
+  line-height:43px;
+  height:43px;
   padding-left:10px;
+  border-bottom:1px solid #cccccc;
 }
 .tip-info{
   padding:0px 15px;
 }
-input,select,textarea{
-	background-color:#e9eaf7;
+.main-title{
+  height:60px;
+  border-bottom:1px solid #cccccc;
+  line-height:60px;
+}
+.main-content{
+  height:45px;
+  line-height:45px;
+}
+.main-content-title a {
+  padding-left:10px;
+  line-height:24px;
+  height:24px;
+}
+.main-content{
+ padding-left:10px;
 }
