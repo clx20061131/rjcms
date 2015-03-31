@@ -8,7 +8,7 @@ html,body {
 	color:#333;
 	background-color: #F9F9F9;
 }
-/* ÈÝÆ÷ */
+/* ï¿½ï¿½ï¿½ï¿½ */
 .wrapper,.header,.content,.footer{ 
 	clear:both; 
 	overflow:hidden;
@@ -45,7 +45,7 @@ html,body {
 .hide{
  display:none;
 }
-/* ×ÖÌå´óÐ¡ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ */
 .F10{ font-size:10px;}
 .F11{ font-size:11px;}
 .F12{ font-size:12px;}
@@ -53,7 +53,7 @@ html,body {
 .F14{ font-size:14px;}
 .F16{ font-size:16px;}
 .F18{ font-size:18px;}
-/* ¶¨ÒåÐÐ¸ß£¬LH Ê¹ÓÃ½ÏÉÙ,Ö÷Òª¶¨Òåline-heightÊôÐÔ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ß£ï¿½LH Ê¹ï¿½Ã½ï¿½ï¿½ï¿½,ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½line-heightï¿½ï¿½ï¿½ï¿½ */
 .LH1{ line-height:1px;}
 .LH10{ line-height:10px;}
 .LH15{ line-height:15px;}
@@ -62,14 +62,14 @@ html,body {
 .LH25{ line-height:25px;}
 .LH30{ line-height:30px;}
 .LH35{ line-height:35px;}
-/* ¶¨ÒåHÏµÁÐ±êÇ©£¬¸²¸ÇHÏµÁÐ±êÇ©Ä¬ÈÏÊôÐÔ */
+/* ï¿½ï¿½ï¿½ï¿½HÏµï¿½Ð±ï¿½Ç©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HÏµï¿½Ð±ï¿½Ç©Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 h1{ font-size:24px;}
 h2{ font-size:20px;}
 h3{ font-size:18px;}
 h4{ font-size:16px;}
 h5{ font-size:14px;}
 h6{ font-size:12px;}
-/* Êó±êÑùÊ½ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ */
 .pointer{ cursor:pointer;}
 
 .text-muted {
@@ -208,4 +208,10 @@ a.bg-danger:hover {
 }
 .del-icon{	
 	background:url(../images/small/action_delete.png) no-repeat center center;
+}
+.w150{
+ width:150px;
+}
+.w375{
+  width:375px;
 }

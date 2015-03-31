@@ -1,7 +1,7 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
 class AdminAction extends Action {
-	
+  public  $URL;
   public function _initialize(){
   	 
   	  $Admin = D('Admin');
@@ -21,10 +21,14 @@ class AdminAction extends Action {
   	  	//生成菜单
   	  	  $menueList = $this->buildMenue();
   	  	  $this->assign('menueList',$menueList);
-  	  	  $this->assign('leftMenue',$menueList['top'][$topId]['sub']);
+  	  	  $this->assign('leftMenue',$menueList[$topId]['sub']);
   	  	  
   	  }
   	
+  }
+  public function _befor_list(){
+      
+  	$this->URL = cookie("__CURL__",__SELF__);
   }
   /**
    * 生成菜单
@@ -94,5 +98,73 @@ class AdminAction extends Action {
 		 
 		 return $systemInfo;
 	}
-
+	/**
+	 * 添加数据
+	 */
+	public function add(){
+		
+		if(IS_POST){
+			
+			$this->insert($data);
+		}else{
+					 
+			 $this->display();
+		}
+	}
+  protected function _insert($data){
+  	
+  	$Model = D($this->getActionName());
+  	if($Model->create($data)){
+  			
+  		if($Model->add()){
+  			$this->success('添加成功',$this->URL);
+  		}else{
+  			$this->error('添加失败'.$Model ->getError());
+  		}
+  			
+  	}else{
+  		$this->error($Model ->getError());
+  	}
+  } 
+  public function read(){
+  	
+  	$this->edit();
+  }
+  public function edit(){
+  	if(IS_POST){
+  		
+  		 $Model = D($this->getActionName());
+  		 if($Model->create()){
+  		 	 if($Model->save()!==false){
+  		 	 	
+  		 	 	$this->success('更新成功',$this->URL);
+  		 	 }else{
+  		 	 	$this->error('更新失败'.$Model ->getError());
+  		 	 }
+  		 }else{
+			$this->error($Model ->getError());
+		 }
+  		
+  	}else{
+  		
+  		$Model = M($this->getActionName());
+  		$pkVal = I('request.primarykey','0','intval');
+  		$this->assign('info',$Model->find($pkVal));
+  		$this->display();
+  	}
+  	
+  }
+  /**
+   * 获取最大的值
+   */
+  protected function _getMaxVal($field){
+  	
+  	$Model = M($this->getActionName());
+  	$val = $Model ->max($field);
+  	if($val!==false){
+  		return $val;
+  	}else{
+  		exit('不存在字段'.$field);
+  	}
+  }
 }

@@ -31,17 +31,25 @@ class MenueModel extends Model {
 	 public function getMenueList($topId=0){
 	 	
 	 	$tempArr = $returnArr = array();
-	 	$tempArr['top'] = $this->where('level = 1 and disabled = 0')->order('listorder asc')->select();
-	 	foreach($tempArr['top'] as $k =>$v){
-	 		$returnArr['top'][$v['id']] = $v;
-	 		$tempArr['top'][$k]['sub'] = $this->where('level = 2 and disabled = 0 and parent = '.$v['id'])->order('listorder asc')->select();
+	 	$tempArr = $this->where('level = 1 and disabled = 0')->order('listorder asc')->select();
+	 	foreach($tempArr as $k =>$v){
+	 		$returnArr[$v['id']] = $v;
+	 		$tempArr[$k]['sub'] = $this->where('level = 2 and disabled = 0 and parent = '.$v['id'])->order('listorder asc')->select();
 	 	
-	 		foreach($tempArr['top'][$k]['sub'] as $k2 =>$v2){
-	 			$returnArr['top'][$v['id']]['sub'][$v2['id']] = $v2;
-	 			$returnArr['top'][$v['id']]['sub'][$v2['id']]['sub'] = $tempArr['top'][$k]['sub']['sub'] = $this->where('level = 3 and disabled = 0 and parent = '.$v2['id'])->order('listorder asc')->select();
+	 		foreach($tempArr[$k]['sub'] as $k2 =>$v2){
+	 			$returnArr[$v['id']]['sub'][$v2['id']] = $v2;
+	 			$returnArr[$v['id']]['sub'][$v2['id']]['sub'] = $tempArr['top'][$k]['sub']['sub'] = $this->where('level = 3 and disabled = 0 and parent = '.$v2['id'])->order('listorder asc')->select();
 	 		}
 	 	}
 	 	return  $returnArr;
+	 }
+	 /**
+	  * 
+	  */
+	 public function getSubMenue($pid=0){
+	 	
+	   return 	$this->where('parent = '.$pid)->select();
+	 
 	 }
 	 /**
 	  * 生成权限
@@ -79,5 +87,31 @@ class MenueModel extends Model {
      	   	    $arr['topAction'] = $topid;
      	   }
      	   return $arr;    	   
+     }
+     /**
+      * 获取父级id序列
+      */
+     public function getParentIds($topId,$leftTopId){
+     	
+     	if($topId){
+     		if($leftTopId){     			
+     			$data['parent_ids'] = $topId.','.$leftTopId;
+     			$data['level'] = 3;
+     			$data['parent'] = $leftTopId;
+     		}else{
+     		
+     			$data['parent_ids'] = $topId;
+     			$data['level'] = 2;
+     			$data['parent'] = $topId;
+     		}
+     		
+     	}else{
+     		
+     		$id = $this->max('id')+1;   
+     		$data['parent_ids'] = $id;
+     		$data['level'] = 1;
+     		$data['parent'] = 0;
+     	}
+     	return $data;
      }
 }

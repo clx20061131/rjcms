@@ -13,3 +13,8 @@ function leftMenueShow(obj){
 	 }  		
 	
 }
+$(function(){
+	$(".side-menue-list").each(function(){
+		leftMenueShow($(this));
+	});
+})
