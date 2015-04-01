@@ -22,7 +22,7 @@ class AdminAction extends Action {
   	  	  $menueList = $this->buildMenue();
   	  	  $this->assign('menueList',$menueList);
   	  	  $this->assign('leftMenue',$menueList[$topId]['sub']);
-  	  	  
+        
   	  }
   	
   }
@@ -128,31 +128,35 @@ class AdminAction extends Action {
   } 
   public function read(){
   	
-  	$this->edit();
+  	    $Model = M($this->getActionName());
+  		$pkVal = I('request.primarykey','0','intval');
+  		return $Model->find($pkVal);
+  	
   }
   public function edit(){
   	if(IS_POST){
   		
-  		 $Model = D($this->getActionName());
-  		 if($Model->create()){
-  		 	 if($Model->save()!==false){
-  		 	 	
-  		 	 	$this->success('更新成功',$this->URL);
-  		 	 }else{
-  		 	 	$this->error('更新失败'.$Model ->getError());
-  		 	 }
-  		 }else{
-			$this->error($Model ->getError());
-		 }
-  		
+  		$this->_update();
   	}else{
   		
-  		$Model = M($this->getActionName());
-  		$pkVal = I('request.primarykey','0','intval');
-  		$this->assign('info',$Model->find($pkVal));
+  		$this->assign('info',$this->read());
   		$this->display();
   	}
   	
+  }
+  protected  function _update(){
+  	
+  	$Model = D($this->getActionName());
+  	if($Model->create()){
+  		if($Model->save()!==false){
+  	
+  			$this->success('更新成功',$this->URL);
+  		}else{
+  			$this->error('更新失败'.$Model ->getError());
+  		}
+  	}else{
+  		$this->error($Model ->getError());
+  	}
   }
   /**
    * 获取最大的值

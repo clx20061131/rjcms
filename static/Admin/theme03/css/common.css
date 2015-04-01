@@ -209,6 +209,15 @@ a.bg-danger:hover {
 .del-icon{	
 	background:url(../images/small/action_delete.png) no-repeat center center;
 }
+.listorder-icon{	
+	background:url(../images/small/listorder.png) no-repeat center center;
+}
+.w50{ 
+  width:50px;
+}
+.w100{
+ width:50px;
+}
 .w150{
  width:150px;
 }

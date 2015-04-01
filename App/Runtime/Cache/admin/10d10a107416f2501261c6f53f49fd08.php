@@ -24,7 +24,10 @@
 				</div>
 				<div class="menue fl">
 				       <ul class="menue-list">
-						  <?php if(is_array($menueList)): $i = 0; $__LIST__ = $menueList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="fl"><a href="<?php echo URL($vo['modul_action']);?>" <?php if($vo['id']==$topId)echo 'class="active"';?> ><?php echo ($vo["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+						  <?php if(is_array($menueList)): $i = 0; $__LIST__ = $menueList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="fl">
+			                	 <?php if($vo['id']==$topId){ echo URL($vo['title'],$vo['modul_action'],array('class'=>'active'));}else echo URL($vo['title'],$vo['modul_action']) ?> 
+			                 
+			                 </li><?php endforeach; endif; else: echo "" ;endif; ?>
 						
 					   </ul>
 				</div>
@@ -32,7 +35,7 @@
 					<ul class="top-info-list">
 					     <li><a href="###"><?php echo session("admin.unick");?></a></li>
 					    
-						 <li><a href="<?php echo URL('Public/logout');?>">退出</a></li>
+						 <li><?php echo URL('退出','Public/logout');?></li>
 					</ul>
 				</div>
 			</div>		
@@ -41,7 +44,10 @@
 					<ul class="menue-left-list">
 					<?php if(is_array($leftMenue)): $i = 0; $__LIST__ = $leftMenue;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li><a href="##" class="side-menue-list"><?php echo ($vo["title"]); ?></a>
 					        <ul class="menue-sub-list hide">
-					           <?php if(is_array($vo["sub"])): $i = 0; $__LIST__ = $vo["sub"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?><li><a href="<?php echo URL($vo2['modul_action']);?>" <?php if($leftId == $vo2['id']) echo 'class="active"';?> ><?php echo ($vo2["title"]); ?></a><?php endforeach; endif; else: echo "" ;endif; ?>
+					           <?php if(is_array($vo["sub"])): $i = 0; $__LIST__ = $vo["sub"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo2): $mod = ($i % 2 );++$i;?><li>
+							     <?php if($leftId == $vo2['id']){ echo URL($vo2['title'],$vo2['modul_action'],array('class'=>'active'));}else echo URL($vo2['title'],$vo2['modul_action']) ?> 
+			                 
+							    </li><?php endforeach; endif; else: echo "" ;endif; ?>
 								
 							</ul>
 					   </li><?php endforeach; endif; else: echo "" ;endif; ?>

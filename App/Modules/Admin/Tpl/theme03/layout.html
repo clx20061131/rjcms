@@ -25,7 +25,10 @@
 				<div class="menue fl">
 				       <ul class="menue-list">
 						  <volist name="menueList" id="vo">
-			                 <li class="fl"><a href="{:URL($vo['modul_action'])}" <?php if($vo['id']==$topId)echo 'class="active"';?> >{$vo.title}</a></li>
+			                 <li class="fl">
+			                	 <?php if($vo['id']==$topId){ echo  URL($vo['title'],$vo['modul_action'],array('class'=>'active'));}else echo URL($vo['title'],$vo['modul_action']) ?> 
+			                 
+			                 </li>
 			               </volist>
 						
 					   </ul>
@@ -34,7 +37,7 @@
 					<ul class="top-info-list">
 					     <li><a href="###"><?php echo session("admin.unick");?></a></li>
 					    
-						 <li><a href="{:URL('Public/logout')}">退出</a></li>
+						 <li>{:URL('退出','Public/logout')}</li>
 					</ul>
 				</div>
 			</div>		
@@ -46,7 +49,10 @@
 					   <li><a href="##" class="side-menue-list">{$vo.title}</a>
 					        <ul class="menue-sub-list hide">
 					           <volist name="vo.sub" id="vo2">
-							    <li><a href="{:URL($vo2['modul_action'])}" <?php if($leftId == $vo2['id']) echo 'class="active"';?> >{$vo2.title}</a>
+							    <li>
+							     <?php if($leftId == $vo2['id']){ echo  URL($vo2['title'],$vo2['modul_action'],array('class'=>'active'));}else echo URL($vo2['title'],$vo2['modul_action']) ?> 
+			                 
+							    </li>
 							    </volist>
 								
 							</ul>

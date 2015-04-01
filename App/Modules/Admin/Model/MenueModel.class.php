@@ -114,4 +114,12 @@ class MenueModel extends Model {
      	}
      	return $data;
      }
+     /**
+      * 获取祖辈序列
+      * $pidList 1,2... 字符串
+      */
+     function getPList($pidList){
+     	
+     	return $this->where("id in($pidList)")->order("field(id,$pidList)")->select();
+     }
 }
