@@ -159,7 +159,7 @@ a.bg-danger:hover {
 	border-bottom-style: solid;
 	border-left-style: solid;
 	cursor:pointer;
-	width:50px;
+	width:80px;
 	height:25px;	
 	text-align: center;
 	border-radius: 4px;
@@ -183,6 +183,12 @@ a.bg-danger:hover {
     border-color: #d43f3a;
     color: #fff;
 }
+.btn-info{
+	color: #fff;
+	background-color: #31b0d5;
+	border-color: #269abc;	
+}
+
 .select{
   padding:5px 10px;
 }
@@ -223,4 +229,10 @@ a.bg-danger:hover {
 }
 .w375{
   width:375px;
+}
+td.bdln{
+  border-left:none;	
+}
+td.bdrn{
+  border-right:none;	
 }

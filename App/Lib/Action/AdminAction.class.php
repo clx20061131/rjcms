@@ -1,7 +1,6 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
 class AdminAction extends Action {
-  public  $URL;
   public function _initialize(){
   	 
   	  $Admin = D('Admin');
@@ -22,13 +21,14 @@ class AdminAction extends Action {
   	  	  $menueList = $this->buildMenue();
   	  	  $this->assign('menueList',$menueList);
   	  	  $this->assign('leftMenue',$menueList[$topId]['sub']);
-        
+  	  	  $this->URL = cookie('lastUrl');
+          $this->assign('LASTURL',$this->URL);
   	  }
   	
   }
-  public function _befor_list(){
+  public function _before_lis(){
       
-  	$this->URL = cookie("__CURL__",__SELF__);
+     cookie("lastUrl",__SELF__); 	
   }
   /**
    * 生成菜单
@@ -108,12 +108,15 @@ class AdminAction extends Action {
 			$this->insert($data);
 		}else{
 					 
-			 $this->display();
+			 $this->display('edit');
 		}
 	}
-  protected function _insert($data){
+  protected function _insert($data='',$table=''){
   	
-  	$Model = D($this->getActionName());
+  	$table = $table?ucfirst($table):$this->getActionName();
+  	$Model = D($table);
+  	$data = $data?$data:$_POST;
+  	
   	if($Model->create($data)){
   			
   		if($Model->add()){
@@ -123,6 +126,7 @@ class AdminAction extends Action {
   		}
   			
   	}else{
+  		
   		$this->error($Model ->getError());
   	}
   } 
@@ -144,10 +148,13 @@ class AdminAction extends Action {
   	}
   	
   }
-  protected  function _update(){
-  	
-  	$Model = D($this->getActionName());
-  	if($Model->create()){
+  protected  function _update($data='',$table=''){
+  	if(!$data){
+  		$data = $_POST;
+  	}
+  	$table = $table?ucfirst($table):$this->getActionName();
+  	$Model = D($table);
+  	if($Model->create($data)){
   		if($Model->save()!==false){
   	
   			$this->success('更新成功',$this->URL);
@@ -156,6 +163,7 @@ class AdminAction extends Action {
   		}
   	}else{
   		$this->error($Model ->getError());
+  		//dump($Model->getError());
   	}
   }
   /**
@@ -166,9 +174,64 @@ class AdminAction extends Action {
   	$Model = M($this->getActionName());
   	$val = $Model ->max($field);
   	if($val!==false){
-  		return $val;
+  		return intval($val);
   	}else{
   		exit('不存在字段'.$field);
   	}
   }
+  /**
+   * 更改排序
+   */
+  public function listorder(){
+  	
+  	 if(IS_POST){
+  	 	 $Model = M($this->getActionName());
+  	 	 $listorderArr = I('post.listorder',array());
+  	 	 $pk = $Model->getPk();
+  	 	 foreach($listorderArr as $k=>$v){
+  	 	    $Model->where("$pk = $k")->save(array('listorder'=>$v));
+  	 	    
+  	 	 }
+  	 	 $this->success('更新排序完成');
+  	 }
+  }
+  /**
+   * 获取当前管理员信息
+   */
+   protected function _uinfo(){
+   	
+   	   $uid = session('admin.uid');
+   	   $Admin = M('Admin');
+   	   return $Admin->find($uid);
+   }
+   /**
+    * 分页列表
+    */
+  protected function _list($table,$where='1=1',$order='',$size=10){
+  	
+  	$M = M($table);
+  	import("ORG.Util.Page");
+  	$count = $M ->where($where)->count();
+  	$Page = new Page($count,$size);
+  	$list = $M ->where($where)->order("listorder desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+  	$pages =$Page->show();
+  	$this->assign("pagesHtml",$pages);
+  	$this->assign("dataList",$list);
+  	cookie("__CURL__",__SELF__);
+  	
+  }
+  protected function _delAll($idStr= 0){
+  	
+  	 $Model = M($this->getActionName());
+  	 if(!$idStr){ 	 	
+  	 	$idStr =  I('request.primarykey','0','intval');	 	
+  	 }
+  	 if($Model->delete($idStr)){
+  	 	$this->success('删除成功');
+  	 }else{
+  	 	$this->error('删除失败'.$Model ->getError());
+  	 }
+  	
+  }
+  
 }

@@ -122,4 +122,15 @@ class MenueModel extends Model {
      	
      	return $this->where("id in($pidList)")->order("field(id,$pidList)")->select();
      }
+     /**
+      * 判断此菜单是否可以删除
+      */
+     function canDel($id){
+     	
+     	if($this->where('parent = '.$id)->find()){
+     		return false;
+     	}else{
+     		return true;
+     	}
+     }
 }

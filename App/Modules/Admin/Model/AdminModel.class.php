@@ -60,6 +60,17 @@ class AdminModel extends Model {
 		 	return false;
 		 }		 
 	}
+	public function changePass($data){
+		$data2['upass'] = md5($data['new_pass']);
+		$where['upass'] = md5($data['old_pass']);
+		$data2['id'] = $where['id'] =  session('admin.uid');
+		if($this->where($where)->find()){
+			$this->save($data2);
+			return true;
+		}else{
+			return false;
+		}
+	}
 	/**
 	 * 退出登录
 	 */
@@ -67,4 +78,5 @@ class AdminModel extends Model {
 		
 		session(null);
 	}
+
 }
