@@ -1,0 +1,70 @@
+<layout name="layout" />
+
+  <div class="main-content">
+	 <div class="main-content-title">
+	    &nbsp;
+	  </div>
+	   <form action="__SELF__"  method="post" class="form001">
+					   <table class="table-detail">
+					   <thead>
+							<tr >
+							  <td colspan="3">网站优化</td>
+							 
+							</tr>
+						</thead>
+						<tbody>
+						   <tr>
+							  <td class="w150">网站标题</td>
+							   <td class="tal w375 bdrn">
+							        <input type="text" name="title" value="{$info.title}" class="input input-350" datatype="s2-50" errormsg="至少2个字符,最多50个字符！">	
+							   </td> 
+							   <td class="bdln">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+						    <tr>
+							  <td>网站关键字</td>
+							  <td class="tal w375 bdrn">
+							         <textarea class="textarea" name="key_word">{$info.key_word}</textarea>	
+							   </td> 
+							   <td class="bdln">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+							 <tr>
+							  <td>网站描述</td>
+							  <td class="tal w375 bdrn">
+							           <textarea class="textarea" name="description">{$info.description}</textarea>	
+							   </td> 
+							   <td class="bdln">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+							<tr>
+							  <td>网站底部隐藏代码</td>
+							  <td class="tal w375 bdrn">
+							         <textarea class="textarea" name="web_code">{$info.web_code}</textarea>	
+							   </td> 
+							   <td class="bdln">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+						
+							
+							<tr>
+							  <td colspan="3" class="tac">
+							     <input type="hidden" name="id" value="{$info.id}">
+							      <input type="submit" class="btn btn-main" value="提交">
+							      <input type="button" class="btn btn-info" value="返回" onclick="javascript:location.href='{$Think.cookie.lastUrl}'">
+							   </td>
+							 							  
+							</tr>
+						</tbody>
+					   </table>
+					   </form>
+		<script type="text/javascript" src="__PUBLIC__/js/validform/Validform.js"></script>
+		<script>
+	     $(".form001").Validform({tiptype:2});  //就这一行代码！;
+	    
+	   </script>
+	</div>	

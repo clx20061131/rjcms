@@ -1,0 +1,100 @@
+<layout name="layout" />
+ <div class="main-title">
+	  <div class="fr">
+		  <form>
+			<input type="text" name="" class="input input-200">
+			<input type="submit" value="搜索" class="btn btn-main">
+		  </form>
+	  </div>
+ </div>
+  <div class="main-content">
+	 <div class="main-content-title">
+	  {:URL('增加','add',array('icon'=>'add'))}  {:URL('编辑','edit',array('icon'=>'add'))}  {:URL('删除','del',array('icon'=>'del'))}{:URL('排序','##',array('icon'=>'listorder','class'=>'listorder'))}
+	  </div>
+	  <div class="main-content-body">
+	  <form action="" method="post" id="form001">
+	  
+	  <table class="table-list" >
+	  <thead>
+		<tr>
+		  <td width="5%">序列号</td>
+		  <td width="5%">菜单id</td>
+		  <td width="15%">菜单名称</td>
+		  <td width="10%">父级id</td>
+		  <td width="10%">URL</td>
+		  <td width="10%">参数</td>
+		  <td width="10%">祖辈id序列</td>
+		  <td width="10%">子级id序列</td>
+		  <td width="10%">操作</td>
+		  <td></td>
+		</tr>
+	</thead>
+	<tbody >
+	  <volist  name="dataList" id="vo">
+		<tr>
+		   <td><input type="text" name='listorder[{$vo.id}]' value="{$vo.listorder}" class="w50"></td>
+		   <td>{$vo.id}</td>
+		   <td>{$vo.title}</td>
+		   <td>{$vo.parent}</td>
+		   <td>{$vo.modul_action}</td>
+		   <td>{$vo.parame}</td>
+		   <td>{$vo.parent_ids}</td>
+		   <td>{$vo.sub_ids}</td>
+		   <td>{:URL('编辑','edit',array('parame'=>array('primarykey'=>$vo['id']),'icon'=>'edit'))}</td>
+		   <td></td>
+		</tr>
+		<?php if($vo['sub']):?>
+		   <volist  name="vo.sub" id="vo2">
+			<tr>
+			   <td><input type="text" name='listorder[{$vo2.id}]' value="{$vo2.listorder}" class="w50"></td>
+			   <td>{$vo2.id}</td>
+			   <td>&nbsp;&nbsp;├&nbsp;{$vo2.title}</td>
+			   <td>{$vo2.parent}</td>
+			   <td>{$vo2.modul_action}</td>
+			   <td>{$vo2.parame}</td>
+			   <td>{$vo2.parent_ids}</td>
+			   <td>{$vo2.sub_ids}</td>
+			   <td> 
+			      {:URL('编辑','edit',array('parame'=>array('primarykey'=>$vo2['id']),'icon'=>'edit'))}
+				  {:URL('删除','del',array('parame'=>array('primarykey'=>$vo2['id']),'icon'=>'del'))}
+			    </td>
+			   <td></td>
+			</tr>
+			<?php if($vo['sub']):?>
+			   <volist  name="vo2.sub" id="vo3">
+				<tr>
+				   <td><input type="text" name='listorder[{$vo3.id}]' value="{$vo3.listorder}" class="w50"></td>
+				   <td>{$vo3.id}</td>
+				   <td>&nbsp;&nbsp;&nbsp;&nbsp;├&nbsp;{$vo3.title}</td>
+				   <td>{$vo3.parent}</td>
+				   <td>{$vo3.modul_action}</td>
+				   <td>{$vo3.parame}</td>
+				   <td>{$vo3.parent_ids}</td>
+				   <td>{$vo3.sub_ids}</td>
+				    <td>
+				    {:URL('编辑','edit',array('parame'=>array('primarykey'=>$vo3['id']),'icon'=>'edit'))}
+				    {:URL('删除','del',array('parame'=>array('primarykey'=>$vo3['id']),'icon'=>'del'))}
+				    </td>
+				   <td></td>
+				 </tr>
+				
+				</volist>
+			<?php endif; ?>
+			</volist>
+		<?php endif; ?>
+		</volist> 
+	</tbody>
+	  </table>	
+	  </form>
+	 </div>
+	  <script>
+	    $(function(){
+	    	$('.listorder').on('click',function(){
+	    		   var apiUrl = "{:U('listorder')}";
+	    		   changeListorder(apiUrl,'form001');
+	    	});
+	    	
+	    })
+	    
+	  </script>
+	</div>	

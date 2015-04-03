@@ -1,0 +1,95 @@
+<layout name="layout" />
+
+  <div class="main-content">
+	 <div class="main-content-title">
+	    &nbsp;
+	  </div>
+	   <form action="__SELF__"  method="post" class="form001">
+					   <table class="table-detail">
+					   <thead>
+							<tr >
+							  <td colspan="3">标题</td>
+							 
+							</tr>
+						</thead>
+						<tbody>
+						   <tr>
+							  <td>顶级菜单</td>
+							  <td class="tal">
+							       <select class="select w150" id="menueLevelTop" name="menueLevelTop">
+							          <option value="0">顶级菜单
+							          <volist name="topList" id="vo">
+							             <option value="{$vo.id}">{$vo.title}
+							          </volist>
+							       </select>
+							       
+							       <select class="select w150 hide" id="menueLevel2" name="menueLevel2">
+							       		<option value="0">请选择
+							       </select>
+							   </td> 
+							   <td>
+							          <span class="tip-info Validform_checktip">请输入密码</span>
+							   </td>							  
+							</tr>
+							<tr>
+							  <td class="w150">菜单名</td>
+							  <td class="tal w375">
+							    <input type="text" name="title" value="" class="input input-350" datatype="*2-50" errormsg="至少2个字符,最多50个字符！">			
+							  </td>		
+							 <td><span class="Validform_checktip"></span></td>
+							</tr>
+							<tr>
+							  <td class="w150">控制器/方法</td>
+							  <td class="tal w375">
+							    <input type="text" name="modul_action" value="" class="input input-350">			
+							  </td>		
+							 <td><span class="Validform_checktip"></span></td>
+							</tr>
+							<tr>
+							  <td class="w150">参数</td>
+							  <td class="tal w375">
+							    <input type="text" name="parame" value="" class="input input-350">			
+							  </td>		
+							 <td><span class="Validform_checktip"></span></td>
+							</tr>
+							
+							<tr>
+							  <td colspan="3" class="tac">
+							     <input type="submit" class="btn btn-main" value="提交">
+							      <input type="button" class="btn btn-info" value="返回" onclick="javascript:location.href='{$Think.cookie.lastUrl}'">
+							   </td>
+							 							  
+							</tr>
+						</tbody>
+					   </table>
+					   </form>
+		<script type="text/javascript" src="__PUBLIC__/js/validform/Validform.js"></script>
+		<script>
+	     $(".form001").Validform({tiptype:2});  //就这一行代码！;
+	     $(function(){
+	    	  $("#menueLevelTop").on("change",function(){
+	    		  var topVal = $(this).val();
+	    		 
+	    		  if(topVal!=0){
+	    			  getMenueList(topVal);
+	    			  $("#menueLevel2").show();
+	    		  }else{	
+	    			
+	    			  $("#menueLevel2").hide();
+	    		  }
+	    	  })
+	    	 
+	     })
+	     function getMenueList(data){
+	    	 var apiUrl = webApi+'getMenueList';
+	    	 var html='<option value="0">请选择';
+	    	 $.getJSON(apiUrl,{pid:data},function(obj){
+	    		 $.each(obj.data,function(i,j){
+	    			 
+	    			html+= '<option value="'+j.id+'">'+j.title;
+	    		 })
+	    		  $("#menueLevel2").html(html);
+	    	 });
+	     }
+	   </script>
+	</div>	

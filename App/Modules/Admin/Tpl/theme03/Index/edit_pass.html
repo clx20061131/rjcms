@@ -1,0 +1,63 @@
+<layout name="layout" />
+
+  <div class="main-content">
+	 <div class="main-content-title">
+	    &nbsp;
+	  </div>
+	   <div class="main-content-body">
+	   <form action="__SELF__"  method="post" class="form001">
+					   <table class="table-detail">
+					   <thead>
+							<tr >
+							  <td colspan="3">编辑昵称</td>
+							 
+							</tr>
+						</thead>
+						<tbody>
+						   <tr>
+							  <td class="w150">原始密码</td>
+							  <td class="tal w375 bdrn">
+							        <input type="password" name="old_pass" value="" class="input input-350" datatype="s2-50" errormsg="至少2个字符,最多50个字符！">	
+							   </td> 
+							   <td class="bdln">
+							          <span class="tip-info Validform_checktip">请输入原始密码</span>
+							   </td>							  
+							</tr>
+							 <tr>
+							  <td>新密码</td>
+							  <td class="tal bdrn">
+							        <input type="password" name="new_pass" value="" class="input input-350" datatype="s2-50" errormsg="至少2个字符,最多50个字符！">	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip">请输入新密码</span>
+							   </td>							  
+							</tr>
+							 <tr>
+							  <td>确认密码</td>
+							  <td class="tal bdrn">
+							        <input type="password" name="re_new_pass" value="" class="input input-350" recheck="new_pass" datatype="s2-50" errormsg="两次密码不一致">	
+							   </td> 
+							   <td class="bdln">
+							          <span class="tip-info Validform_checktip">请确认密码</span>
+							   </td>							  
+							</tr>
+							
+							<tr>
+							  <td colspan="3" class="tac">
+							     <input type="hidden" name="id" value="{$info.id}">
+							      <input type="submit" class="btn btn-main" value="提交">
+							      <input type="button" class="btn btn-info" value="返回" onclick="javascript:location.href='{$Think.cookie.lastUrl}'">
+							   </td>
+							 							  
+							</tr>
+						</tbody>
+					   </table>
+					   </form>
+					 </div>
+			<script type="text/javascript" src="__PUBLIC__/js/validform/Validform.js"></script>
+			<script>
+	     $(".form001").Validform({tiptype:2});  //就这一行代码！;
+	    
+	   </script>
+		
+	</div>	
