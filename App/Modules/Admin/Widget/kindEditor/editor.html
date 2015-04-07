@@ -1,0 +1,12 @@
+        <link rel="stylesheet" href="__PUBLIC__/plugins/kindeditor-4.1.10/themes/default/default.css" />
+		<script charset="utf-8" src="__PUBLIC__/plugins/kindeditor-4.1.10/kindeditor-min.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/plugins/kindeditor-4.1.10/lang/zh_CN.js"></script>
+		<textarea name="{$name}" style="width:800px;height:200px;visibility:hidden;" id="editorContent">{$data}</textarea>
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('#editorContent', {
+					allowFileManager : true
+				});
+			})
+		</script>

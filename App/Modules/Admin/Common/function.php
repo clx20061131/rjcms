@@ -53,5 +53,29 @@ function get_sort_group($gid=0){
 		return $groupArr;
 	}
 	 
-	 
+}
+/**
+ * 判断是否有图
+ * @param unknown $url
+ * @return string
+ */
+function hasImage($url){
+	
+	if($url){
+		return '<font color="green" style="padding:0px 5px;font-size:12px;">图</font>';
+	}
+	return '';
+}
+/**
+ * 判断是否可用
+ * @param unknown $usable
+ * @return string
+ */
+function usable($usable){
+	
+	if(!$usable){
+		return '<font color="red"  style="padding:0px 5px;font-size:12px;">不可用</font>';
+	}else{
+		return '';
+	}
 }

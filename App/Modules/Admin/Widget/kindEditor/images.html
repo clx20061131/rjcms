@@ -1,0 +1,29 @@
+        <link rel="stylesheet" href="__PUBLIC__/plugins/kindeditor-4.1.10/themes/default/default.css" />
+		<script charset="utf-8" src="__PUBLIC__/plugins/kindeditor-4.1.10/kindeditor-min.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/plugins/kindeditor-4.1.10/lang/zh_CN.js"></script>
+		<script>
+			KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true
+				});
+				K('#J_selectImage').click(function() {
+					editor.loadPlugin('multiimage', function() {
+						editor.plugin.multiImageDialog({
+							clickFn : function(urlList) {
+								var div = K('#J_imageView');
+								div.html('');
+								K.each(urlList, function(i, data) {
+									div.append('<img src="' + data.url + '"><input type="hidden" name="images[]" value="'+ data.url +'">');
+								});
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+		</script>
+		<input type="button" id="J_selectImage" value="批量上传" />
+		<div id="J_imageView"></div>
+		<input class="ke-input-text" type="text" id="url" value="{$data}" readonly="readonly" name="{$name}" /> 
+		<input type="button" id="uploadButton" value="Upload" />
+		

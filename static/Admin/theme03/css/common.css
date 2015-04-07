@@ -218,6 +218,12 @@ a.bg-danger:hover {
 .listorder-icon{	
 	background:url(../images/small/listorder.png) no-repeat center center;
 }
+.open-icon{	
+	background:url(../images/small/kai.png) no-repeat center center;
+}
+.close-icon{	
+	background:url(../images/small/guan.png) no-repeat center center;
+}
 .w50{ 
   width:50px;
 }
@@ -235,4 +241,7 @@ td.bdln{
 }
 td.bdrn{
   border-right:none;	
+}
+.bd{
+	border:1px solid #cccccc;
 }

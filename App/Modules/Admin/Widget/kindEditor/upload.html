@@ -1,0 +1,43 @@
+        <link rel="stylesheet" href="__PUBLIC__/plugins/kindeditor-4.1.10/themes/default/default.css" />
+		<script charset="utf-8" src="__PUBLIC__/plugins/kindeditor-4.1.10/kindeditor-min.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/plugins/kindeditor-4.1.10/lang/zh_CN.js"></script>
+		<script>
+			KindEditor.ready(function(K) {
+				var uploadbutton = K.uploadbutton({
+					button : K('#uploadButton')[0],
+					fieldName : 'imgFile',
+					url : '__PUBLIC__/plugins/kindeditor-4.1.10/php/upload_json.php?dir={$fileType}',
+					afterUpload : function(data) {
+						if (data.error === 0) {
+							var url = K.formatUrl(data.url, 'absolute');
+							if(url.search(/(jpg|png|gif)/i) > 0){
+								$("#imgShow img").attr('src',url);
+								$("#imgShow").show();
+							}
+						    K('#url').val(url);
+						} else {
+							alert(data.message);
+						}
+					},
+					afterError : function(str) {
+						alert('自定义错误信息: ' + str);
+					}
+				});
+				uploadbutton.fileBox.change(function(e) {
+					uploadbutton.submit();
+				});
+			});
+			$(function(){
+				var imgVal = $("#url").val();
+				if(imgVal.search(/(jpg|png|gif)/i) > 0){
+					$("#imgShow img").attr('src',imgVal);
+					$("#imgShow").show();
+				}
+				
+			})
+		</script>
+		<input class="ke-input-text" type="text" id="url" value="{$data}" readonly="readonly" name="{$name}" /> 
+		
+		<input type="button" id="uploadButton" value="Upload" />
+		<span id="imgShow" style="display:none"><img src="" width="40" height="40"></span>
+		

@@ -15,6 +15,12 @@ $(function(){
 			return false;
 		}
 	})
+	/* 必填选项 如果是必填的，则加红星标识. */
+	 
+    $("form td.required").each(function(){  
+        var $required = $('<font color="red">*</font>'); //创建元素  
+        $(this).append($required); //然后将它追加到文档中  
+    });  
 })
 /*左边菜单*/
 function leftMenueShow(obj){

@@ -169,7 +169,7 @@ class AdminAction extends Action {
   /**
    * 获取最大的值
    */
-  protected function _getMaxVal($field){
+  protected function _getMaxVal($field='listorder'){
   	
   	$Model = M($this->getActionName());
   	$val = $Model ->max($field);
@@ -208,7 +208,7 @@ class AdminAction extends Action {
     * 分页列表
     */
   protected function _list($table,$where='1=1',$order='',$size=10){
-  	
+  
   	$M = M($table);
   	import("ORG.Util.Page");
   	$count = $M ->where($where)->count();

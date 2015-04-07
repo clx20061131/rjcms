@@ -5,7 +5,7 @@
  *
  */
 class AdsAction extends AdminAction {
-	
+	public $groupId = 2;
 	public function _initialize(){
 		parent::_initialize();
 	}
@@ -18,9 +18,15 @@ class AdsAction extends AdminAction {
     */
     public function lis(){
     	
-    	$Menue = D('Menue');
-    	$list = $Menue ->getMenueList();
-    	$this->assign('dataList',$list);
+    	$where = '1= 1';
+    	$sortId = I('get.sortid',0,'intval');
+    	if($sortId){
+    		$where .='sort_id = '.$sortId;
+    	}
+    	$this->_list('ads',$where);
+    	$sortList = M('sort')->where('group_id = '.$this->groupId)->select();
+    	
+    	$this->assign('sortList',$sortList);
     	$this->display();
     }
     /**
@@ -30,13 +36,15 @@ class AdsAction extends AdminAction {
     
    public function add(){
     	if(IS_POST){    	
+    		$_POST['listorder'] = $this->_getMaxVal()+1;
+    		$_POST['create_time'] = $_POST['update_time'] = time();
     	   $this->_insert($data);
     	}else{   		
     		
-    		$Menue = D('Menue');
-    		$topMenue = $Menue ->getMenueList(0);
-    		$this->assign('topList',$topMenue);
-    		$this->display();
+    	     $Sort = M('sort');
+    	     $sortList = $Sort ->where('group_id = 2')->order('listorder desc')->select();
+    	     $this->assign('sortList',$sortList);
+    		 $this->display('edit');
     	}  
     }
     /**
@@ -47,14 +55,15 @@ class AdsAction extends AdminAction {
     	
     	if(IS_POST){
     		$data = $_POST;
+    		$_POST['update_time'] = time();
     		$this->_update($data);
     	}else{
-    		
-    		$info = $this->read();
-    		$Menue = D('Menue');
-    		$info['parentArr'] = $Menue->getPList($info['parent_ids']);
-    		$this->assign('info',$info);
-    		$this->display();
+    		    		 
+    	     $Sort = M('sort');
+    	     $sortList = $Sort ->where('group_id = 2')->order('listorder desc')->select();
+    	     $this->assign('sortList',$sortList);
+    	     $this->assign('info',$this->read());    	     
+    		 $this->display('edit');   		
     	}
     }
     
@@ -63,7 +72,7 @@ class AdsAction extends AdminAction {
      */
     public function del(){
     	
-    	$Menue = D('Menue');
+    	$Menue = D('ads');
     	$id = I('get.primarykey');
     	
     }
