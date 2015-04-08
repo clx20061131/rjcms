@@ -148,6 +148,42 @@ class AdminAction extends Action {
   	}
   	
   }
+  /**
+   * 更改排序
+   */
+  public function listorder(){
+  	 
+  	if(IS_POST){
+  		$Model = M($this->getActionName());
+  		$listorderArr = I('post.listorder',array());
+  		$pk = $Model->getPk();
+  		foreach($listorderArr as $k=>$v){
+  			$Model->where("$pk = $k")->save(array('listorder'=>$v));
+  				
+  		}
+  		$this->success('更新排序完成');
+  	}
+  }
+  /**
+   * 更改状态
+   */
+  public function change_status(){
+  
+  	if(IS_POST){
+  		$Model = M($this->getActionName());
+  		$id = I('post.id',array());
+  		$usable = I('post.usable',0,'intval');
+  		$pk = $Model->getPk();
+  		$rst = $Model->where("$pk = $id")->save(array('usable'=>$usable));
+  		
+  		if($rst!==false){
+  			$this->ajaxReturn(array('status'=>1));
+  		}else{
+  			$this->ajaxReturn(array('status'=>0));
+  		}
+  		
+  	}
+  }
   protected  function _update($data='',$table=''){
   	if(!$data){
   		$data = $_POST;
@@ -179,22 +215,7 @@ class AdminAction extends Action {
   		exit('不存在字段'.$field);
   	}
   }
-  /**
-   * 更改排序
-   */
-  public function listorder(){
-  	
-  	 if(IS_POST){
-  	 	 $Model = M($this->getActionName());
-  	 	 $listorderArr = I('post.listorder',array());
-  	 	 $pk = $Model->getPk();
-  	 	 foreach($listorderArr as $k=>$v){
-  	 	    $Model->where("$pk = $k")->save(array('listorder'=>$v));
-  	 	    
-  	 	 }
-  	 	 $this->success('更新排序完成');
-  	 }
-  }
+
   /**
    * 获取当前管理员信息
    */

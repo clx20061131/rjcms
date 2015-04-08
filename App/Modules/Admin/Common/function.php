@@ -10,10 +10,19 @@ function URL($title,$MA,$other=array(),$display=false){
 	}
 	$parame = isset($other['parame'])?$other['parame']:'';
 	$class = isset($other['class'])?$other['class']:"";
+	if( isset($other['attr']) && is_array($other['attr']) ){
+		$attr ='';
+		foreach($other['attr'] as $k => $v){
+			$attr.= $k.'="'.$v.'" ';
+		}
+	}else{
+		$attr = '';
+	}
+	
 	if(is_array($parame)){
 		
 		if($Rule ->checkHasPower()){
-			return '<a href="'. U($MA,$parame).'" class="'.$class.'">'.$icoHtml.$title.'</a>';
+			return '<a href="'. U($MA,$parame).'" class="'.$class.'"'.$attr.'>'.$icoHtml.$title.'</a>';
 		}else{
 			if($display){
 				return '<a href="javascript:alert(\'您没有权限\');" style="background-color: #989b9e;">'.$icoHtml.$title.'</a>';
@@ -29,7 +38,7 @@ function URL($title,$MA,$other=array(),$display=false){
 
 		if($Rule ->checkHasPower()){ 
 			
-			return '<a href="'. U($MA.'?'.$parame).'" class="'.$class.'">'.$icoHtml.$title.'</a>';
+			return '<a href="'. U($MA.'?'.$parame).'" class="'.$class.'"'.$attr.'>'.$icoHtml.$title.'</a>';
 		}else{
 			if($display){
 				return '<a href="javascript:alert(\'您没有权限\');" style="background-color: #d8dadc; cursor: no-drop;">'.$icoHtml.$title.'</a>';

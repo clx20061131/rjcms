@@ -42,4 +42,18 @@ function changeListorder(apiUrl,formId){
 		  $('#'+formId).submit();
 	  }
 }
-
+/* 更改状态 */
+function changeStatus(apiUrl,data){
+	
+	 
+	  if(confirm('您确认执行此操作吗？')){
+		 
+		  $.post(apiUrl,data,function(obj){
+			  if(obj.status == 0){
+				  alert('操作失败')
+			  }else{
+				  location.reload();
+			  }
+		  },'json')
+	  }
+}

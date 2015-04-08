@@ -219,9 +219,11 @@ a.bg-danger:hover {
 	background:url(../images/small/listorder.png) no-repeat center center;
 }
 .open-icon{	
+	 width: 41px;
 	background:url(../images/small/kai.png) no-repeat center center;
 }
 .close-icon{	
+	width: 41px;
 	background:url(../images/small/guan.png) no-repeat center center;
 }
 .w50{ 
