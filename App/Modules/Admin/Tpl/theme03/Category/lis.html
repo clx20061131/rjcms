@@ -1,0 +1,67 @@
+<layout name="layout" />
+ <div class="main-title">
+	  <div class="fr">
+		 <form>
+			<input type="text" name="" class="input input-200">
+			<input type="submit" value="搜索" class="btn btn-main">
+		  </form>
+	  </div>
+ </div>
+  <div class="main-content">
+	 <div class="main-content-title">
+	    {:URL('增加','add',array('icon'=>'add'))}
+	    {:URL('排序','##',array('icon'=>'listorder','class'=>'listorder'))}
+	 
+		<ul class="ul-list-row">
+		     <volist name="sortList" id="vo">
+		    	 <li class="tac"><a href="{:U('Ads/lis',array('sortid'=>$vo['sort_id']))}">{$vo.sort_title}</a></li>
+		     </volist>
+		 
+		 </ul>
+		 
+	  </div>
+	  <div class="main-content-body">
+	   <form action="" method="post" id="form001">	  
+		  <table class="table-list" >
+		  <thead>
+			<tr>
+			  <td width="5%">序列号</td>
+			  <td width="5%">栏目id</td>
+			  <td width="15%">栏目名称</td>
+			  <td width="10%">栏目keyword</td>
+			  <td width="20%">操作</td>
+			  <td></td>
+			</tr>
+		</thead>
+		<tbody>
+		  <volist  name="dataList" id="vo">
+			<tr>
+			   <td><input type="text" name='listorder[{$vo.catid}]' value="{$vo.listorder}" class="w50"></td>
+			   <td>{$vo.catid}</td>
+			   <td>{$vo.html}{$vo.catname}</td>
+			   <td>{$vo.keywords}</td>
+			   <td>
+			   {:URL('编辑','edit',array('parame'=>array('primarykey'=>$vo['catid']),'icon'=>'edit'))}
+			   {:URL('删除','del',array('parame'=>array('primarykey'=>$vo['catid']),'icon'=>'del'))}
+			 
+			   </td>
+			   <td></td>
+			</tr>
+		</volist> 
+		 <tr><notpresent name="dataList"><td colspan="10" class="text-warning tac">没有数据</td></notpresent></tr>
+		</tbody>
+		  </table>	
+	  </form>
+	 </div>
+	   <script>
+	    $(function(){
+	    	$('.listorder').on('click',function(){
+	    		   var apiUrl = "{:U('listorder')}";
+	    		   changeListorder(apiUrl,'form001');
+	    	});
+	
+	    })
+	    
+	    
+	  </script>
+	</div>	

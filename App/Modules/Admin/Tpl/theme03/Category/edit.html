@@ -1,0 +1,103 @@
+<layout name="layout" />
+
+  <div class="main-content">
+	 <div class="main-content-title">
+	    &nbsp;
+	  </div>
+	   <div class="main-content-body">
+	   <form action="__SELF__"  method="post" class="form001">
+					   <table class="table-detail">
+					   <thead>
+							<tr >
+							  <td colspan="3">类别<present name="info">编辑<else />增加</present></td>
+							 
+							</tr>
+						</thead>
+						<tbody>
+						   <tr>
+							  <td class="w150">栏目</td>
+							  <td class="tal w375 bdrn">
+							      <select class="select w150" name="pid">
+							       <option value="0">顶级栏目
+							       <volist name="cateList" id="vo">
+							           <option value="{$vo.catid}" <?php if($info['pid']== $vo['catid'])echo 'selected';?> >{$vo.html}{$vo.catname}
+							       </volist>
+							      </select>
+							   </td> 
+							  
+							   <td class="bdln">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+							 <tr>
+							  <td class="required">栏目名称</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="catname" value="{$info.catname}" class="input input-350" datatype="s2-50" errormsg="至少2个字符,最多50个字符！">	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip">请输入名称</span>
+							   </td>							  
+							</tr>	
+							<tr>
+							  <td class="required">栏目连接</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="keywords" value="{$info.keywords}" class="input input-350" datatype="*2-50" errormsg="至少2个字符,最多50个字符！">	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+							<tr>
+							  <td class="required">模型</td>
+							  <td class="tal bdrn">
+							      <select class="select w150" name="mid">
+							       <volist name="modelList" id="vo">
+							           <option value="{$vo.mid}" <?php if($info['mid']== $vo['mid'])echo 'selected';?> >{$vo.title}
+							       </volist>
+							      </select>
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+							 <tr>
+							  <td class="">栏目描述</td>
+							  <td class="tal bdrn">
+							       	
+							     <textarea class="textarea" name="description">{$info.description}</textarea>
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>	
+							 <tr>
+							  <td>图片</td>
+							  <td class="tal bdrn">
+							      
+							        {:W('kindEditor',array('type'=>'upload','data'=>$info['image'],'fileType'=>'image','name'=>'image'))}
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>	
+					
+							<tr>
+							  <td colspan="3" class="tac">
+							    <present name="info"> <input type="hidden" name="catid" value="{$info.catid}"></present>
+							    
+							      <input type="submit" class="btn btn-main" value="提交">
+							      <input type="button" class="btn btn-info" value="返回" onclick="javascript:location.href='{$Think.cookie.lastUrl}'">
+							   </td>
+							 							  
+							</tr>
+						</tbody>
+					   </table>
+					   </form>
+					 </div>
+			<script type="text/javascript" src="__PUBLIC__/js/validform/Validform.js"></script>
+			<script>
+	     $(".form001").Validform({tiptype:2});  //就这一行代码！;
+	    
+	   </script>
+		
+	</div>	

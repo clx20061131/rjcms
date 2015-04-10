@@ -1,0 +1,57 @@
+<layout name="layout" />
+
+  <div class="main-content">
+	 <div class="main-content-title">
+	    &nbsp;
+	  </div>
+	   <div class="main-content-body">
+	   <form action="__SELF__"  method="post" class="form001">
+					   <table class="table-detail">
+					   <thead>
+							<tr >
+							  <td colspan="3">模型<present name="info">编辑<else />增加</present></td>
+							 
+							</tr>
+						</thead>
+						<tbody>
+					
+							 <tr>
+							  <td class="required">模型名称</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="title" value="{$info.title}" class="input input-350" datatype="s2-50" errormsg="至少2个字符,最多50个字符！">	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip">请输入名称</span>
+							   </td>							  
+							</tr>	
+							
+							 <tr>
+							  <td class="required">表名</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="mtable" value="{$info.mtable}" class="input input-350" datatype="s2-50" errormsg="至少2个字符,最多50个字符！">	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>	
+							 
+							<tr>
+							  <td colspan="3" class="tac">
+							    <present name="info"> <input type="hidden" name="id" value="{$info.id}"></present>
+							    
+							      <input type="submit" class="btn btn-main" value="提交">
+							      <input type="button" class="btn btn-info" value="返回" onclick="javascript:location.href='{$Think.cookie.lastUrl}'">
+							   </td>
+							 							  
+							</tr>
+						</tbody>
+					   </table>
+					   </form>
+					 </div>
+			<script type="text/javascript" src="__PUBLIC__/js/validform/Validform.js"></script>
+			<script>
+	     $(".form001").Validform({tiptype:2});  //就这一行代码！;
+	    
+	   </script>
+		
+	</div>	

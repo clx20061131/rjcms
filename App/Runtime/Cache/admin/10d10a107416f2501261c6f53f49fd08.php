@@ -54,8 +54,19 @@
 					</ul>
 			   </div>
 			   <div class="cont-right">
-			    
-			      <p class="position">当前位置：<a href="">首页</a> >><a href="">首页</a></p>
+			   <?php if(isset($categoryList)): ?><div class="cont-right-left ">
+			         <h3 style="line-height:40px;height:40px;text-align:center">栏目列表</h3>
+			        <ul>
+			         <?php if(is_array($categoryList)): $i = 0; $__LIST__ = $categoryList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if(isset($vo['havesun'])):?>
+			          	<li><?php echo ($vo["html"]); echo ($vo["catname"]); ?>  </li>   
+				      <?php else:?>
+				     	 <li><a href="<?php echo U('content/lis',array('catid'=>$vo['catid']));?>"><?php echo ($vo["html"]); echo ($vo["catname"]); ?></a></li>
+				      <?php endif; endforeach; endif; else: echo "" ;endif; ?>
+				
+				   </ul>
+			     </div><?php endif; ?>
+			     <div class="cont-right-main">
+			        <p class="position">当前位置：<a href="">首页</a> >><a href="">首页</a></p>
 				    <div class="main">
 					   
    <div class="main-content">
@@ -68,6 +79,7 @@
 	    </ul>
    </div>			
 				    </div>
+				 </div>
 			</div>
 			<div class="footer">
 			  <p>制作单位：北大青鸟</p>

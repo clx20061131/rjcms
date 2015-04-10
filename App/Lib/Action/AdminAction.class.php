@@ -228,14 +228,15 @@ class AdminAction extends Action {
    /**
     * 分页列表
     */
-  protected function _list($table,$where='1=1',$order='',$size=10){
+  protected function _list($table,$where='1=1',$order='listorder desc',$size=10){
   
   	$M = M($table);
   	import("ORG.Util.Page");
   	$count = $M ->where($where)->count();
   	$Page = new Page($count,$size);
-  	$list = $M ->where($where)->order("listorder desc")->limit($Page->firstRow . ',' . $Page->listRows)->select();
+  	$list = $M ->where($where)->order($order)->limit($Page->firstRow . ',' . $Page->listRows)->select();
   	$pages =$Page->show();
+  	
   	$this->assign("pagesHtml",$pages);
   	$this->assign("dataList",$list);
   	cookie("__CURL__",__SELF__);
