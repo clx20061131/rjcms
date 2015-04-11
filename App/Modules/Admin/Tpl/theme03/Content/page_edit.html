@@ -9,17 +9,17 @@
 					   <table class="table-detail">
 					   <thead>
 							<tr >
-							  <td colspan="3">类别<present name="info">编辑<else />增加</present></td>
+							  <td colspan="3">内容<present name="info">编辑<else />增加</present></td>
 							 
 							</tr>
 						</thead>
 						<tbody>
 						   <tr>
-							  <td class="w150">类别</td>
+							  <td class="w150">栏目</td>
 							  <td class="tal w375 bdrn">
-							      <select class="select w150" name="sort_id">
-							       <volist name="sortList" id="vo">
-							           <option value="{$vo.sort_id}" <?php if($info['sort_id']== $vo.sort_id)echo 'selected';?> >{$vo.sort_title}
+							      <select class="select w150" name="catid">
+							       <volist name="cateList" id="vo">
+							           <option value="{$vo.catid}" <?php if($info['catid']== $vo['catid'])echo 'selected';if($vo['havesun'])echo 'disabled';?> >{$vo.html}{$vo.catname}
 							       </volist>
 							      </select>
 							   </td> 
@@ -27,46 +27,55 @@
 							          <span class="tip-info Validform_checktip"></span>
 							   </td>							  
 							</tr>
-							 <tr>
+							<tr>
 							  <td class="required">标题</td>
 							  <td class="tal bdrn">
-							        <input type="text" name="title" value="{$info.title}" class="input input-350" datatype="s2-50" errormsg="至少2个字符,最多50个字符！">	
+							        <input type="text" name="title" value="{$info.title}" class="input input-350" datatype="*2-50" errormsg="至少2个字符,最多50个字符！">	
 							   </td> 
 							   <td class="bdln bdrn">
 							          <span class="tip-info Validform_checktip">请输入名称</span>
 							   </td>							  
 							</tr>	
-							
-							 <tr>
-							  <td class="required">连接地址</td>
+							<tr>
+							  <td >关键字</td>
 							  <td class="tal bdrn">
-							        <input type="text" name="link" value="{$info.link}" class="input input-350" datatype="url" errormsg="请填写url地址">	
+							        <input type="text" name="keywords" value="{$info.keywords}" class="input input-350" >	
 							   </td> 
 							   <td class="bdln bdrn">
 							          <span class="tip-info Validform_checktip"></span>
 							   </td>							  
 							</tr>	
-							 <tr>
-							  <td>图片</td>
+							<tr>
+							  <td>描述</td>
 							  <td class="tal bdrn">
-							      
-							        {:W('kindEditor',array('type'=>'upload','data'=>$info['image'],'fileType'=>'image','name'=>'image'))}
+							        <input type="text" name="description" value="{$info.description}" class="input input-350" >	
 							   </td> 
 							   <td class="bdln bdrn">
 							          <span class="tip-info Validform_checktip"></span>
 							   </td>							  
 							</tr>	
-							  <tr>
-							  <td>简介/备注</td>
-							   <td class="tal bdrn">
-							      <textarea class="textarea" name="short_info">{$info.short_info}</textarea>	
+							<tr>
+							  <td>内容</td>
+							  <td class="tal bdrn">
+							       {:W('kindEditor',array('type'=>'editor','name'=>'content','data'=>$info['content']))}
 							   </td> 
 							   <td class="bdln bdrn">
 							          <span class="tip-info Validform_checktip"></span>
 							   </td>							  
 							</tr>
 							<tr>
+							  <td>外链地址</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="link" value="{$info.link}" class="input input-350">	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>	
+							
+							<tr>
 							  <td colspan="3" class="tac">
+							  <input type="hidden" name="mtable" value="{$mtable}">
 							    <present name="info"> <input type="hidden" name="id" value="{$info.id}"></present>
 							    
 							      <input type="submit" class="btn btn-main" value="提交">

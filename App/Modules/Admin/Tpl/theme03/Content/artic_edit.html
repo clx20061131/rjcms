@@ -1,0 +1,122 @@
+<layout name="layout" />
+
+  <div class="main-content">
+	 <div class="main-content-title">
+	    &nbsp;
+	  </div>
+	   <div class="main-content-body">
+	   <form action="__SELF__"  method="post" class="form001">
+					   <table class="table-detail">
+					   <thead>
+							<tr >
+							  <td colspan="3">内容<present name="info">编辑<else />增加</present></td>
+							 
+							</tr>
+						</thead>
+						<tbody>
+						   <tr>
+							  <td class="w150">栏目</td>
+							  <td class="tal w375 bdrn">
+							      <select class="select w150" name="catid">
+							       <volist name="cateList" id="vo">
+							           <option value="{$vo.catid}" <?php if($info['catid']== $vo['catid'])echo 'selected';if($vo['havesun'])echo 'disabled';?> >{$vo.html}{$vo.catname}
+							       </volist>
+							      </select>
+							   </td> 
+							   <td class="bdln">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+							<tr>
+							  <td class="required">标题</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="title" value="{$info.title}" class="input input-350" datatype="*2-50" errormsg="至少2个字符,最多50个字符！">	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip">请输入名称</span>
+							   </td>							  
+							</tr>	
+							<tr>
+							  <td >关键字</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="keywords" value="{$info.keywords}" class="input input-350" >	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>	
+							<tr>
+							  <td>描述</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="description" value="{$info.description}" class="input input-350" >	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>	
+							<tr>
+							  <td>内容</td>
+							  <td class="tal bdrn">
+							       {:W('kindEditor',array('type'=>'editor','name'=>'content','data'=>$info['content']))}
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+							<tr>
+							  <td>图片</td>
+							  <td class="tal bdrn">
+							       {:W('kindEditor',array('type'=>'upload','name'=>'image','fieldType'=>'image','data'=>$info['image']))}
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							</tr>
+							 <tr>
+							  <td>外链地址</td>
+							  <td class="tal bdrn">
+							        <input type="text" name="link" value="{$info.link}" class="input input-350">	
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							 </tr>	
+							<tr>
+							  <td>状态</td>
+							  <td class="tal bdrn">
+							   <?php if($info):?>
+							       <input type="radio" name="status" value="0" class="input" <?php if($info['status'] == 0)echo 'checked';?>> 关闭 
+							       <input type="radio" name="status" value="1" class="input" <?php if($info['status'] == 1)echo 'checked';?>> 正常
+							       <input type="radio" name="status" value="2" class="input" <?php if($info['status'] == 2)echo 'checked';?>> 推荐
+							    <?php else:?>
+							        <input type="radio" name="status" value="0" class="input"> 关闭 
+							        <input type="radio" name="status" value="1" class="input" checked> 正常
+							        <input type="radio" name="status" value="2" class="input"> 推荐
+							    <?php endif;?>  
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip"></span>
+							   </td>							  
+							 </tr>	
+							
+							<tr>
+							  <td colspan="3" class="tac">
+							  <input type="hidden" name="mtable" value="{$mtable}">
+							    <present name="info"> <input type="hidden" name="id" value="{$info.id}"></present>
+							    
+							      <input type="submit" class="btn btn-main" value="提交">
+							      <input type="button" class="btn btn-info" value="返回" onclick="javascript:location.href='{$Think.cookie.lastUrl}'">
+							   </td>
+							 							  
+							</tr>
+						</tbody>
+					   </table>
+					   </form>
+					 </div>
+			<script type="text/javascript" src="__PUBLIC__/js/validform/Validform.js"></script>
+			<script>
+	     $(".form001").Validform({tiptype:2});  //就这一行代码！;
+	    
+	   </script>
+		
+	</div>	

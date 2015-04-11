@@ -127,12 +127,13 @@ class AdminAction extends Action {
   			
   	}else{
   		
-  		$this->error($Model ->getError());
+  		$this->error($Model ->getDbError());
   	}
   } 
-  public function read(){
-  	
-  	    $Model = M($this->getActionName());
+  public function read($tb=''){
+  	    
+  	    $table= $tb?$tb:$this->getActionName();
+  	    $Model = M($table);
   		$pkVal = I('request.primarykey','0','intval');
   		return $Model->find($pkVal);
   	
@@ -198,7 +199,7 @@ class AdminAction extends Action {
   			$this->error('更新失败'.$Model ->getError());
   		}
   	}else{
-  		$this->error($Model ->getError());
+  		$this->error($Model ->getDbError());
   		//dump($Model->getError());
   	}
   }
@@ -236,7 +237,6 @@ class AdminAction extends Action {
   	$Page = new Page($count,$size);
   	$list = $M ->where($where)->order($order)->limit($Page->firstRow . ',' . $Page->listRows)->select();
   	$pages =$Page->show();
-  	
   	$this->assign("pagesHtml",$pages);
   	$this->assign("dataList",$list);
   	cookie("__CURL__",__SELF__);
