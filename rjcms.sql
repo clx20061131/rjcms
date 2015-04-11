@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-04-10 10:26:32
+-- Generation Time: 2015-04-11 11:14:42
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `rj_admin` (
 --
 
 INSERT INTO `rj_admin` (`id`, `uname`, `unick`, `upass`, `roleid`, `last_login_time`, `last_login_ip`, `total_login_num`, `create_time`, `status`) VALUES
-(1, 'admin', '超级管理员', '21232f297a57a5a743894a0e4a801fc3', 1, 1428629323, '127.0.0.1', 28, 1, 1);
+(1, 'admin', '超级管理员', '21232f297a57a5a743894a0e4a801fc3', 1, 1428715241, '127.0.0.1', 29, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -113,15 +113,27 @@ INSERT INTO `rj_ads` (`id`, `title`, `short_info`, `sort_id`, `link`, `image`, `
 
 CREATE TABLE IF NOT EXISTS `rj_artic` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `catid` int(11) NOT NULL COMMENT '栏目id',
   `title` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `keywords` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `description` varbinary(255) DEFAULT NULL,
   `image` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `content` text COLLATE utf8_bin,
+  `link` varchar(255) COLLATE utf8_bin DEFAULT NULL COMMENT '外链地址',
   `create_time` int(10) unsigned DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL COMMENT '0-关闭 1-普通 2-推荐',
+  `update_time` int(11) NOT NULL,
+  `status` tinyint(4) DEFAULT '1' COMMENT '0-关闭 1-普通 2-推荐',
+  `views` int(10) unsigned NOT NULL DEFAULT '0',
+  `listorder` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `rj_artic`
+--
+
+INSERT INTO `rj_artic` (`id`, `catid`, `title`, `keywords`, `description`, `image`, `content`, `link`, `create_time`, `update_time`, `status`, `views`, `listorder`) VALUES
+(1, 2, '美太平洋舰队司令：中国用挖掘机在南海建长城', '长城', '中国用挖掘机在南海建长城', '/rjcms/static/Public/plugins/kindeditor-4.1.10/attached/image/20150411/20150411044102_66156.jpg', '　在拉特基表态前，<strong>美国太平洋舰队司令哈里斯公开批评中国“用挖掘机和推土机在南海建‘沙土长城’”“增加地区紧张和导致误判的可能”。</strong>美\r\n防长卡特访日时刚刚称美国反对用胁迫方式改变南海现状，并“坚决反对军事化”。10日，他又在首尔暗批中国，称不用多边外交手段解决南海争端容易“没朋\r\n友”，而美国不用军事手段解决问题，在该地区朋友就多。《纽约时报》称，卡特用词比哈里斯更外交些，但意思一致——敦促北京停工。\r\n<p>\r\n	南海会成为近期中美对抗的中心舞台吗？这似乎要看华盛顿能否戒掉“防范中国”的心魔。“华盛顿-马尼拉”双簧改变不了什么，顶多是让“南海争锋”这部剧多了“假仗义”和“装委屈”这两个角色。\r\n</p>\r\n<p>\r\n	10日，中国外交部新闻发布厅，发言人华春莹穿着比前一天颜色鲜艳了不少的紫色外套出现在媒体镜头前。但她所要表态的第一个话题与24小时前完全一致——南海。\r\n</p>\r\n<p>\r\n	时间向前推几小时。金斯敦当地时间9日，作为肯尼迪后首个访问牙买加的美国总统，奥巴马在当地做了一次演讲，话题却直指中国。他在回答有关南海\r\n问题的提问时称，“我们担心的是，中国未必会遵守国际规范和规则，并利用其绝对的块头和肌肉迫使其他国家屈服”。他还说，“我们认为此事可以通过外交方式\r\n解决，菲律宾和越南并非像中国那样大，但这不意味着他们就可以被人挤到一边”。\r\n</p>', '', 1428720311, 1428722364, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -141,19 +153,20 @@ CREATE TABLE IF NOT EXISTS `rj_category` (
   `keywords` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '栏目连接key',
   `mid` tinyint(4) DEFAULT NULL COMMENT '模型id',
   PRIMARY KEY (`catid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
 
 --
 -- 转存表中的数据 `rj_category`
 --
 
 INSERT INTO `rj_category` (`catid`, `catname`, `pid`, `sort_id`, `image`, `description`, `seting`, `listorder`, `keywords`, `mid`) VALUES
-(1, '新闻中心', 0, 1, '', '', NULL, 2, 'news', NULL),
+(1, '新闻中心', 0, 1, '', '', NULL, 2, 'news', 2),
 (2, '军事新闻', 1, 1, '', '', NULL, 1, 'news/junshi', 2),
-(5, '国际新闻', 1, 1, '', '', NULL, 2, 'news/guoji', 1),
-(4, '美国新闻', 5, 1, NULL, NULL, NULL, 3, 'news/meiguo', NULL),
-(8, '娱乐新闻', 1, NULL, '', '娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻', NULL, 6, 'news/star', 1),
-(9, '电影娱乐', 8, NULL, '', '电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐', NULL, 7, 'news/happy', NULL);
+(5, '国际新闻', 1, 1, '', '', NULL, 2, 'news/guoji', 2),
+(4, '美国新闻', 5, 1, '', '', NULL, 3, 'news/meiguo', 2),
+(8, '娱乐新闻', 1, NULL, '', '娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻', NULL, 6, 'news/star', 2),
+(9, '电影娱乐', 8, NULL, '', '电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐', NULL, 7, 'news/happy', 2),
+(10, '关于我们', 0, NULL, '', '', NULL, 8, 'about', 1);
 
 -- --------------------------------------------------------
 
@@ -237,8 +250,18 @@ CREATE TABLE IF NOT EXISTS `rj_page` (
   `catid` int(11) DEFAULT NULL,
   `content` text COLLATE utf8_bin,
   `create_time` int(10) unsigned DEFAULT NULL,
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0',
+  `listorder` int(10) unsigned NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0-隐藏 1-正常 2-推荐',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `rj_page`
+--
+
+INSERT INTO `rj_page` (`id`, `title`, `keyword`, `description`, `catid`, `content`, `create_time`, `update_time`, `listorder`, `status`) VALUES
+(1, '关于我们', NULL, '12321323', 10, '<table class="ke-zeroborder" border="0" cellpadding="0" cellspacing="0" width="689">\r\n	<tbody>\r\n		<tr>\r\n			<td bgcolor="#e3e6f5" height="12">\r\n				<p>\r\n					<b>新浪网客户服务</b>\r\n				</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td height="121">\r\n				<p>\r\n					受理新浪网客户问题，包括产品咨询、技术支持、投诉受理、建议反馈，以及购买帮助等。<br />\r\n客户服务热线:<b><span>4006900000</span></b><br />\r\nEMAIL:<a href="mailto:sinacsc@vip.sina.com">sinacsc@vip.sina.com</a><br />\r\n微博官方账号请@<a href="http://weibo.com/cscd" target="_blank">新浪客服</a><br />\r\n各产品详情请<a href="http://help.sina.com.cn/index.php?s=contactus&amp;a=view&amp;id=25" target="_blank">联系客服</a>。\r\n				</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td bgcolor="#e3e6f5">\r\n				<p>\r\n					<b>新浪网广告销售</b>\r\n				</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td height="121">\r\n				<p>\r\n					广告销售部<br />\r\n新浪广告官方服务微博：@新浪广告 <a href="http://weibo.com/sinaemarketing" target="_blank">http://weibo.com/sinaemarketing</a><br />\r\n广告产品介绍请查看：<a href="http://emarketing.sina.com.cn" target="_blank">http://emarketing.sina.com.cn </a><br />\r\n新浪品牌广告及效果广告产品购买，请咨询新浪广告热线：<span><b>4008812813</b></span><br />\r\n新浪商业运营客户服务官方微博：@微博广告-渠道 <a href="http://weibo.com/wbguanggao" target="_blank">http://weibo.com/wbguanggao</a><br />\r\n效果广告产品介绍请查看： <a href="http://e.sina.com.cn/" target="_blank">http://e.sina.com.cn/</a>\r\n				</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td bgcolor="#e3e6f5">\r\n				<b>新浪网新闻热线</b>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td height="96">\r\n				<p>\r\n					给新浪网提供新闻线索,重大新闻爆料<br />\r\n<a href="http://www.sina.com.cn/2008/agreement.html">自由撰稿稿件采购协议书</a>\r\n				</p>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td bgcolor="#e3e6f5">\r\n				<b>新浪网各频道合作及分类</b>\r\n			</td>\r\n		</tr>\r\n		<tr>\r\n			<td height="963">\r\n				<br />\r\n<span>内容报道合作</span>—欢迎各类媒体、影视剧公司、制作公司、专业网站、出版社、协会等与我们联系，在各类文字、图片、音视频资讯等方面建立长期合作。<br />\r\n<span>活动合作</span>—欢迎各方与新浪网洽谈推广会议、论坛、演唱会、大奖赛、巡展或体育赛事等各类活动。通过新浪的报道推广，扩大相关活动的影响力。<br />\r\nTel：(86-10)82628888 转 6420\r\n            媒体拓展部<br />\r\nFax：(86-10)62522426 <br />\r\nEmail：<a href="mailto:sinamedia@vip.sina.com">sinamedia@vip.sina.com</a><br />\r\n<span>出版合作</span>—欢迎各大出版社与新浪合作各类图书内容。<br />\r\nTel：(86-10)52719403<br />\r\nIdeal \r\n            Plaza, 19F, 58 Bei si huan xi Road, Haidian District, Beijing \r\n            100080, China<br />\r\n北京市北四环西路58号理想国际大厦19层 \r\n            邮编：100080<br />\r\n<br />\r\n<b>新浪无线</b><br />\r\n<span> 移动增值产品、语音增值业务——WAP、订阅、下载、彩铃、IVR（交互式语音应答）</span><br />\r\nTel：4006900000 转 2<br />\r\nFax：(86-20)38108645 <br />\r\nEmail：<a href="mailto:gzkf@staff.sina.com.cn">gzkf@staff.sina.com.cn</a><br />\r\n<br />\r\n<b>新浪微博</b> <br />\r\n客户服务热线：<br />\r\n4000960960 （个人） <br />\r\n4000980980（企业）<br />\r\n或4006900000 转 1 <br />\r\nIdeal Plaza, 9F, 58 Bei si huan xi Road, Haidian District, Beijing 100080,China <br />\r\n北京市北四环西路58号理想国际大厦9层 邮编：100080\r\n			</td>\r\n		</tr>\r\n	</tbody>\r\n</table>', 1428721727, 1428721727, 1, 0);
 
 -- --------------------------------------------------------
 
