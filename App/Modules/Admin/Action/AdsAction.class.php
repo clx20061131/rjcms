@@ -21,7 +21,7 @@ class AdsAction extends AdminAction {
     	$where = '1= 1';
     	$sortId = I('get.sortid',0,'intval');
     	if($sortId){
-    		$where .='sort_id = '.$sortId;
+    		$where .=' and sort_id = '.$sortId;
     	}
     	$this->_list('ads',$where);
     	$sortList = M('sort')->where('group_id = '.$this->groupId)->select();
@@ -72,8 +72,6 @@ class AdsAction extends AdminAction {
      */
     public function del(){
     	
-    	$Menue = D('ads');
-    	$id = I('get.primarykey');
-    	
+    	$this->_delAll();
     }
 }

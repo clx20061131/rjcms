@@ -39,13 +39,13 @@
 			<tr>
 			   <td><input type="text" name='listorder[{$vo.id}]' value="{$vo.listorder}" class="w50"></td>
 			   <td>{$vo.id}</td>
-			   <td>{$vo.title}{$vo.image|hasImage}</td>
+			   <td>{$vo.title}{$vo.image|hasImage}{$vo.status|markStatus}</td>
 			   <td>{$vo.views}</td>
 			   <td>{$vo.update_time|toDate}</td>
 			   <td>
 			   {:URL('编辑','edit',array('parame'=>array('primarykey'=>$vo['id'],'catid'=>$vo['catid']),'icon'=>'edit'))}
 			   {:URL('删除','del',array('parame'=>array('primarykey'=>$vo['id'],'catid'=>$vo['catid']),'icon'=>'del'))}
-			   <?php if($vo['usable'])echo URL('关','###',array('icon'=>'close','attr'=>array('dataid'=>$vo['id'])));else echo URL('开','###',array('icon'=>'open','attr'=>array('dataid'=>$vo['id'])));?>
+			
 			   </td>
 			   <td></td>
 			</tr>

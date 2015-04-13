@@ -88,3 +88,21 @@ function usable($usable){
 		return '';
 	}
 }
+/**
+ * 状态描述
+ * @param unknown $status
+ * @return string
+ */
+function markStatus($status){
+	switch($status){
+		case 0:
+			return '<font color="red">&nbsp;&nbsp;不可用&nbsp;&nbsp;</font>';
+			break;
+		case 2:
+			return '<font color="red">&nbsp;&nbsp;推荐&nbsp;&nbsp;</font>';
+			break;
+		default:
+			return '';
+	}
+	
+}

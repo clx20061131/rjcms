@@ -242,9 +242,10 @@ class AdminAction extends Action {
   	cookie("__CURL__",__SELF__);
   	
   }
-  protected function _delAll($idStr= 0){
+  protected function _delAll($idStr= 0,$mtable=''){
   	
-  	 $Model = M($this->getActionName());
+  	 $table = $mtable?ucfirst($mtable):$this->getActionName();
+  	 $Model = M($table);
   	 if(!$idStr){ 	 	
   	 	$idStr =  I('request.primarykey','0','intval');	 	
   	 }

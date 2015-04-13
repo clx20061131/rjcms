@@ -25,6 +25,11 @@ class ContentAction extends AdminAction {
     	
         $catid = I('get.catid',0,'intval');
         $mtable = $this->getModelInfo($catid);
+        if($mtable == 'page'){
+        	$Page = M('page');
+        	$primarykey = $Page ->where('catid = '.$catid)->getField('id');
+        	$this->redirect('content/edit',array('catid'=>$catid,'primarykey'=>$primarykey));
+        }
         $this->_list($mtable,"catid = $catid");
         
         $this->display();	
@@ -44,6 +49,7 @@ class ContentAction extends AdminAction {
     	}else{   	
     			
     		 $catid = I('get.catid',0,'intval');
+    		 $this->assign('catid',$catid);
     	//获取有相同模型的栏目
     	     $Cate = M('Category');
     	     $catInfo = $Cate ->where('catid = '.$catid)->find();
@@ -55,7 +61,7 @@ class ContentAction extends AdminAction {
     	     $mtable = $Model ->where('mid = '.$catInfo['mid'])->getField('mtable');
     	     $this->assign('cateList',$cateList);
     	     $this->assign('mtable',$mtable);
-    	     	   
+    	    
     		 $this->display($mtable.'_edit');
     	}  
     }
@@ -89,6 +95,17 @@ class ContentAction extends AdminAction {
     	    $this->assign('info',$this->read($mtable));    	     
     		$this->display($mtable.'_edit');   		
     	}
+    }
+
+    /**
+     * 删除
+     */
+    public function del(){
+    	
+    	$catid = I('get.catid',0,'intval');
+    	$table = $this->getModelInfo($catid);
+    	$this->_delAll('',$table);
+    	 
     }
     private function getModelInfo($catid,$field="mtable"){
     	

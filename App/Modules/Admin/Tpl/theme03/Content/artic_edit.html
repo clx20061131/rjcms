@@ -19,7 +19,7 @@
 							  <td class="tal w375 bdrn">
 							      <select class="select w150" name="catid">
 							       <volist name="cateList" id="vo">
-							           <option value="{$vo.catid}" <?php if($info['catid']== $vo['catid'])echo 'selected';if($vo['havesun'])echo 'disabled';?> >{$vo.html}{$vo.catname}
+							           <option value="{$vo.catid}" <?php if($info['catid']== $vo['catid'] ||$catid == $vo['catid'])echo 'selected';if($vo['havesun'])echo 'disabled';?> >{$vo.html}{$vo.catname}
 							       </volist>
 							      </select>
 							   </td> 
