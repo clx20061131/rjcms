@@ -2,7 +2,7 @@
  <div class="main-title">
 	  <div class="fr">
 		 <form>
-			<input type="text" name="" class="input input-200">
+			<input type="text" name="keyword" class="input input-200" value="{$keyword}">
 			<input type="submit" value="搜索" class="btn btn-main">
 		  </form>
 	  </div>
@@ -14,7 +14,7 @@
 	 
 		<ul class="ul-list-row">
 		     <volist name="sortList" id="vo">
-		    	 <li class="tac"><a href="{:U('Ads/lis',array('sortid'=>$vo['sort_id']))}">{$vo.sort_title}</a></li>
+		    	 <li class="tac"><a href="{:U('Ads/lis',array('sortid'=>$vo['sort_id']))}" <?php if($sortid == $vo['sort_id'])echo 'style="color:red"';?>>{$vo.sort_title}</a></li>
 		     </volist>
 		 
 		 </ul>
@@ -60,20 +60,21 @@
 	    	$('.listorder').on('click',function(){
 	    		   var apiUrl = "{:U('listorder')}";
 	    		   changeListorder(apiUrl,'form001');
+	    		   return false;
 	    	});
 	    	$('.open-icon').on('click',function(){
 	    		var id = $(this).parent('a').attr('dataid');
 	    		
 	    		var apiUrl = "{:U('change_status')}";
 	    		changeStatus(apiUrl,{usable: 1,id: id});
-	    		
+	    		 return false;
 	    	});
 	    	$('.close-icon').on('click',function(){
 	    		var id = $(this).parent('a').attr('dataid');
 	    		
 	    		var apiUrl = "{:U('change_status')}";
 	    		changeStatus(apiUrl,{usable: 0,id: id});
-	    		
+	    		 return false;
 	    	});
 	    	
 	    })

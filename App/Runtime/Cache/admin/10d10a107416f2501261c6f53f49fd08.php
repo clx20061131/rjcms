@@ -66,7 +66,7 @@
 				   </ul>
 			     </div><?php endif; ?>
 			     <div class="cont-right-main">
-			        <p class="position">当前位置：<a href="">首页</a> >><a href="">首页</a></p>
+			        <p class="position">当前位置：<?php echo ($nowPosition); ?></p>
 				    <div class="main">
 					   
    <div class="main-content">

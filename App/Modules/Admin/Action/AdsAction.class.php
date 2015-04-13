@@ -22,6 +22,12 @@ class AdsAction extends AdminAction {
     	$sortId = I('get.sortid',0,'intval');
     	if($sortId){
     		$where .=' and sort_id = '.$sortId;
+    		$this->assign('sortid',$sortId);
+    	}
+    	$keyword = I('get.keyword','','trim');
+    	if($keyword){
+    		$where .=" and title like '%$keyword%'";
+    		$this->assign('keyword',$keyword);
     	}
     	$this->_list('ads',$where);
     	$sortList = M('sort')->where('group_id = '.$this->groupId)->select();

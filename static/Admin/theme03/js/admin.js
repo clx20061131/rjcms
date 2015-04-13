@@ -39,7 +39,9 @@ function changeListorder(apiUrl,formId){
 	
 	  $('#'+formId).attr('action',apiUrl);
 	  if(confirm('您确认执行此操作吗？')){
+		
 		  $('#'+formId).submit();
+		
 	  }
 }
 /* 更改状态 */

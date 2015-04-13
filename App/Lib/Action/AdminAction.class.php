@@ -23,8 +23,40 @@ class AdminAction extends Action {
   	  	  $this->assign('leftMenue',$menueList[$topId]['sub']);
   	  	  $this->URL = cookie('lastUrl');
           $this->assign('LASTURL',$this->URL);
+        //获取当前位置
+         $this->assign('nowPosition',$this->_nowPosition($m,$a)); 
   	  }
   	
+  }
+  protected function _nowPosition($m,$a){
+  	
+  	$ma = ucfirst($m).'/'.$a;
+  	$Menue = M('menue');
+  	$rst = $Menue -> where('modul_action like "'.$ma.'"')->find();
+  	$html = '';
+  	
+  	if($rst){
+  		$pids = $rst['parent_ids'];
+  		$list = $Menue->where('id in('.$pids.')')->order('id ,'.$pids)->select();
+  		
+  		foreach($list as $v){
+  			
+  			$html.='<a href="'.U($v['modul_action']).'">'.$v['title'].'>></a>';
+  		}
+  		$html.='<a href="##">'.$rst['title'].'</a>';
+  	}else{
+  		
+  		$rst = $Menue-> where('modul_action like "'.ucfirst($m).'%" and level=3')->find();
+  		
+  		$pids = $rst['parent_ids'];
+  		$list = $Menue->where('id in('.$pids.')')->order('id ,'.$pids)->select();
+  		foreach($list as $v){
+  				
+  			$html.='<a href="'.U($v['modul_action']).'">'.$v['title'].'>></a>';
+  		}
+  		$html.='<a href="##">'.$rst['title'].'</a>';
+  	}
+  	return $html;
   }
   public function _before_lis(){
       
@@ -152,6 +184,7 @@ class AdminAction extends Action {
   /**
    * 更改排序
    */
+
   public function listorder(){
   	 
   	if(IS_POST){

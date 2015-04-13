@@ -1,10 +1,11 @@
 <layout name="layout" />
+<if condition="$catid neq 0">
  <div class="main-title">
 	  <div class="fr">
-		 <form>
-			<input type="text" name="" class="input input-200">
+		<!--   <form id="formSearch">
+			<input type="text" name="keyword"  class="input input-200" placeholder="标题搜索" value="{$keyword}">
 			<input type="submit" value="搜索" class="btn btn-main">
-		  </form>
+		  </form>-->
 	  </div>
  </div>
   <div class="main-content">
@@ -58,14 +59,17 @@
 	   <script>
 	    $(function(){
 	    	$('.listorder').on('click',function(){
-	    		   var apiUrl = "{:U('listorder')}";
+	    		 var apiUrl = "{:U('content/listorder',array('catid'=>$catid))}";
+	    		   
 	    		   changeListorder(apiUrl,'form001');
+	    		   return false;
 	    	});
 	    	$('.open-icon').on('click',function(){
 	    		var id = $(this).parent('a').attr('dataid');
 	    		
 	    		var apiUrl = "{:U('change_status')}";
 	    		changeStatus(apiUrl,{usable: 1,id: id});
+	    		 return false;
 	    		
 	    	});
 	    	$('.close-icon').on('click',function(){
@@ -73,6 +77,7 @@
 	    		
 	    		var apiUrl = "{:U('change_status')}";
 	    		changeStatus(apiUrl,{usable: 0,id: id});
+	    		 return false;
 	    		
 	    	});
 	    	
@@ -81,3 +86,4 @@
 	    
 	  </script>
 	</div>	
+	</if>
