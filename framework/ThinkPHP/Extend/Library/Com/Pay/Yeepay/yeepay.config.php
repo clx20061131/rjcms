@@ -7,9 +7,10 @@
  */
 
 #	商户编号p1_MerId,以及密钥merchantKey 需要从易宝支付平台获得
-$p1_MerId			= "10012413112";																										//#开发
-$merchantKey	= "94H6990C65080B78E9657789464gKXSn7d98ogE44EH9K6Gg3N4KA17H53QQ";		//#开发
+$p1_MerId			= "10001126856";																										#测试使用
+$merchantKey	= "69cl522AV6q613Ii4W6u8K6XuW8vM1N6bFgyv769220IuYe9u37N4y7rI4Pl";		#测试使用
 
 $logName	= "YeePay_HTML.log";
+$return_url = "http://baidu.com";
 
 ?> 

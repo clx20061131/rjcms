@@ -3,8 +3,7 @@
 class IndexAction extends HomeAction {
 	
     public function index(){
-    	import('Com.Pay.Alipay.Alipay');
-    	$Alipay = new Alipay();
     	
+    	$this->display();
     }
 }

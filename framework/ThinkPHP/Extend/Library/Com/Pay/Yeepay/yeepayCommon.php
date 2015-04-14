@@ -20,13 +20,13 @@ class yeebao{
 	public $p1_MerId;																										#测试使用
     private $merchantKey;		#测试使用
     private $logName;
-	
+	public  $return_url; //返回通知地址
     public function __construct(){
-		 include LIB_PATH.'Extend/yeebao/merchantProperties.php';
+		 require_once 'yeepay.config.php';
 		 $this->p1_MerId = $p1_MerId;
 		 $this->merchantKey = $merchantKey;
 		 $this->logName = $logName;
-	
+	     $this->return_url = $return_url;
 	} 
 //签名函数生成签名串
 function getReqHmacString($p2_Order,$p3_Amt,$p4_Cur,$p5_Pid,$p6_Pcat,$p7_Pdesc,$p8_Url,$pa_MP,$pd_FrpId,$pr_NeedResponse)
