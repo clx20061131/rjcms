@@ -1,3 +1,4 @@
+<tagLib name="clx"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +7,8 @@
 </head>
 <body>
 
-  test index
+<clx:content  table="artic" where="1=1">
+<p>{$val.title}---{$val.description}</p>
+</clx:content>
 </body>
 </html>

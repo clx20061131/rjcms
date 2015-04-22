@@ -288,5 +288,40 @@ function redirect_url($url=""){
   	  return empty($url) ? __APP__ : $url;
 	
 	}
-   
 }
+//数组转化为json;
+function encode_json($str) {
+		return json_encode(url_encode($str));
+}
+//json转化为数组;
+function decode_json($str) {
+	return url_decode(json_decode($str,true));
+}
+/**
+ *
+*/
+function url_encode($str) {
+		if(is_array($str)) {
+			foreach($str as $key=>$value) {
+				$str[urlencode($key)] = url_encode($value);
+			}
+		} else {
+			$str = urlencode($str);
+		}
+	
+		return $str;
+ }
+  
+ function url_decode($str) {
+ 	if(is_array($str)) {
+ 		foreach($str as $key=>$value) {
+ 			$str[urldecode($key)] = url_decode($value);
+ 		}
+ 		
+ 	} else {
+ 		
+ 		$str = urldecode($str);
+ 	}
+ 
+ 	return $str;
+ }
