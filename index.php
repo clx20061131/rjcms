@@ -1,4 +1,5 @@
   <?php
+    header("Content-type: text/html; charset=utf-8");
    //定义项目名称
     define('APP_NAME', 'App');
     //定义项目路径
