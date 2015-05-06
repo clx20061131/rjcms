@@ -1,0 +1,1 @@
+document.writeln("<script language=\"javascript\" src=\"/qq/qq.html\" charset=\"gb2312\"></script>");

@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+/*Slide Start幻灯片位置开始*/
+#Slidebox{width:100%; height:388px;  padding:0px;  margin:0 auto;  /*position:relative;*/ background:#d9dfe3; overflow:hidden;}
+#flashBg {height: 388px;overflow: hidden;width:100%;clear: both;margin: 0;padding: 0;}
+#flashLine{background: url(../images/touming.png) repeat-x center bottom;height: 388px;width: 100%;clear: both;}
+#flash{width: 1000px;height: 388px;overflow: hidden;margin: 0 auto;clear: both;position: relative;padding: 0px 0px;}
+#flash a{width: 1000px;height: 388px;display: none;}
+#flash img{width: 1000px;height: 388px;}
+.flash_bar{width:550px;padding-left:450px;z-index:1000;height:30px;overflow: hidden;position:absolute;padding-top:13px;
+bottom:0px;background: url(../images/tg_flashbar.png) no-repeat 0px 0px;text-align: center;}
+.flash_bar .dq{
+display:block;float:left;width:12px;height:12px;margin-right:15px;cursor: pointer;background: url(../images/pagination.png) no-repeat 0px -12px; overflow:hidden;
+_background: none;display:inline;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/pagination.png" ,sizingMethod="crop");
+}
+
+.flash_bar .no{display: block;float: left;width:12px;height:12px;margin-right:15px;cursor: pointer;
+background:url(../images/pagination.png) no-repeat 0px 0px; overflow:hidden;
+_background: none;display:inline;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/pagination.png" ,sizingMethod="crop");
+}
+
+#example {width:995px; height:382px; position:relative; margin:0 auto;}
+.mask{ position:absolute; left:0px; top:0px; background:url(../images/mask.png) no-repeat 0 0; z-index:101; width:995px; height:382px;}
+#slides {position:absolute;top:0;left:0;z-index:100;}
+#slides .slide{width:995px;padding:0px; height:382px;}
+#slides .slide .translucent{ z-index:6; display:block; width:995px; height:42px; /*filter:alpha(opacity=50); opacity:0.50;*/ position:absolute; left:0px; bottom:0px; background:url(../images/slidesTranslucent.png) no-repeat left bottom;}
+
+* html #slides .slide .translucent{ z-index:6; display:block; width:995px; height:42px; filter:alpha(opacity=50); opacity:0.50; position:absolute; left:0px; bottom:0px; background:#000;}
+
+#slides .slide .description{z-index:106; display:block; width:395px; text-align:left; padding-left:5px; height:164px;  position:absolute; left:465px; bottom:96px;  
+color:#fff; font:normal 12px/1.5 Tahoma; text-indent:-9999px;}
+#slides .slide .description a{ text-decoration:none; color:#fff; display:block; width:395px; height:164px; }
+
+#slides .next,#slides .prev{position:absolute;top:352px;left:22px;width:15px;height:19px;display:block;z-index:101; overflow:hidden; background:url(../images/On_a_frame.png) no-repeat left top; text-indent:-9999px;}
+.slides_container{width:995px;height:382px;overflow:hidden;position:relative;}
+
+#slides .next{left:957px;background:url(../images/Next_frame.png) no-repeat left top;}
+.pagination {margin:0;width:90px; position:absolute; top:355px; left:455px; z-index:1000;}
+.pagination li {float:left;margin:0 1px;}
+.pagination li a{display:block;width:13px;height:0;padding-top:12px;background-image:url(../images/pagination.png);background-position:0 0;float:left;overflow:hidden;}
+
+.pagination li.current a {background-position:0 -12px;}
