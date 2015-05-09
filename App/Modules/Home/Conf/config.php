@@ -17,5 +17,7 @@ return array(
 				'__UPLOAD__' => __ROOT__.'/static/upload',
 		),
 		'TAGLIB_PRE_LOAD' => 'clx' ,
+		'WEB_URL' =>'/rjcms/'
+		 
 );
 ?>

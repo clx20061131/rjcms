@@ -3,7 +3,7 @@
 class IndexAction extends HomeAction {
 	
     public function index(){
-    	
+    	$this->title = '首页';
     	$this->display();
     }
 }

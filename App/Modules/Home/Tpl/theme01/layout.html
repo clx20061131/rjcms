@@ -2,53 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>首页--睿杰网络</title>
-<meta name="keywords" content=""> 
-<meta name="description" content="">
+<title>{$title}-睿杰网络</title>
+<meta name="keywords" content="{$seo['key_word']}"> 
+<meta name="description" content="{$seo['description']}">
 <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
 <link rel="stylesheet" type="text/css" href="__CSS__/Vizo-style.css" media="all">
 <link rel="stylesheet" type="text/css" href="__CSS__/kefu.css" media="all">
 <script type="text/javascript" src="__JS__/jquery-1.6.2.min.js"></script>
-<script type="text/javascript"> 
-//<![CDATA[
-$(document).ready(function(){					   
-$(".item1").hover(function(){$("#tit_fc1").slideDown("normal");	}, function() {$("#tit_fc1").slideUp("fast");});				
-$(".item2").hover(function(){$("#tit_fc2").slideDown("normal");	}, function() {$("#tit_fc2").slideUp("fast");});
-$(".item3").hover(function(){$("#tit_fc3").slideDown("normal");	}, function() {$("#tit_fc3").slideUp("fast");});
-});			   
-var currentindex=1;
-$("#flashBg").css("background-color",$("#flash1").attr("name"));
-function changeflash(i) {	
-currentindex=i;
-for (j=1;j<=5;j++){
-	if (j==i){ 
-		$("#flash"+j).fadeIn("normal");
-		$("#flash"+j).css("display","block");
-		$("#f"+j).removeClass();
-		$("#f"+j).addClass("dq");
-		$("#flashBg").css("background-color",$("#flash"+j).attr("name"));
-	}else{
-		$("#flash"+j).css("display","none");
-		$("#f"+j).removeClass();
-		$("#f"+j).addClass("no");
-	}
- }}
-function startAm(){
-timerID = setInterval("timer_tick()",4800);//6000代表间隔时间设置
-}
-function stopAm(){
-clearInterval(timerID);
-}
-function timer_tick() {
-    currentindex=currentindex>=5?1:currentindex+1;//此处的5代表幻灯片循环遍历的次数
-	changeflash(currentindex);}
-$(document).ready(function(){
-$(".flash_bar div").mouseover(function(){stopAm();}).mouseout(function(){startAm();});
-startAm();
-});
- 
- //]]>
-</script>
+
 </head>
 <body>
 <script type="text/javascript"> 
@@ -73,65 +34,60 @@ $(document).ready(function(){
  
 });
 </script>
+<!--  logo start -->
 <div class="topbox">
 	<dl>
-		<a href="http://www.yunwuxian.net/index.html" class="topsearch_btn" title="云无限优化建站"><dt></dt></a>
+		<a href="http://www.ruijie.pw" class="topsearch_btn" title="睿杰网络"><dt></dt></a>
 		<dd></dd>
 	</dl>
 </div>
+<!--  logo end -->
 <!-- 一级栏目start -->
 <div class="navbox">
- 
 	<ul class="nav">
-					<li class="nav_child"><a href="http://www.yunwuxian.net/index.html" target="_parent" class="nav_main nav1">首　页</a></li>
-					<li class="nav_child"><a href="http://www.yunwuxian.net/SEO/10.html" target="_parent" class="nav_main nav2">网站优化</a></li>
-				    <li class="nav_child"><a href="http://www.yunwuxian.net/SEO/11.html" target="_parent" class="nav_main nav3">网站建设</a></li>
-					<li class="nav_child"><a href="javascript:void(0)" target="_parent" class="nav_main nav4">建站优化解决方案</a>
-						<div class="subnav_wrap" style="display: none;">
-						<div class="subnav_main">
-						
+		<li class="nav_child"><a href="{$Think.config.WEB_URL}" target="_parent" class="nav_main nav1">首　页</a></li>
+		<li class="nav_child"><a href="javascript:void(0)" target="_parent" class="nav_main nav4">网站建设</a>
+			<div class="subnav_wrap" style="display: none;">
+				<div class="subnav_main">							
 					<ul class="subnav">
-								<li class="subnav_class1">
-												<h3>网站SEO优化方案</h3>
+						<li class="subnav_class1">
+							<h3>网站SEO优化方案</h3>
 							<ul>
-									<li><a href="http://www.yunwuxian.net/SEO/14.html" target="_parent">SEO优化软件</a></li>
-									<li><a href="http://www.yunwuxian.net/SEO/13.html" target="_parent">网站优化分析工具</a></li>
+								<li><a href="" target="_parent">SEO优化软件</a></li>
+								<li><a href="" target="_parent">网站优化分析工具</a></li>
 							</ul>
+						  </li>
+						  <li class="subnav_class2">
+							   <h3>网站建设解决方案</h3>
+								<ul>
+										<li><a href="" target="_parent">网站制作\定制开发</a></li>
+										<li><a href="" target="_parent">微信，淘宝等接口开发</a></li>
+										<li><a href="" target="_parent">网站功能修改\页面改版</a></li>
+								</ul>
 							</li>
-								<li class="subnav_class2">
-												<h3>网站建设解决方案</h3>
-							<ul>
-									<li><a href="http://www.yunwuxian.net/SEO/11.html" target="_parent">网站制作\定制开发</a></li>
-							</ul>
+							<li class="subnav_class3">
+								<h3>移动网站解决方案</h3>
+								<ul>
+										<li><a href="" target="_parent">手机网站制作</a></li>
+								</ul>
 							</li>
-								<li class="subnav_class3">
-												<h3>移动网站解决方案</h3>
-							<ul>
-									<li><a href="http://www.yunwuxian.net/SEO/17.html" target="_parent">手机网站制作</a></li>
-							</ul>
+							<li class="subnav_class3">
+								<h3>域名和服务器购买</h3>
+								<ul>
+										<li><a href="" target="_parent">域名选择意见</a></li>
+										<li><a href="" target="_parent">空间购买指导</a></li>
+								</ul>
 							</li>
-					</ul>
-					</div>
-				<div class="clear"></div>
-				<div class="subnav_wrap_shadow"></div>
-					</div>
-					</li>
-					
-							<li class="nav_child"><a href="http://www.yunwuxian.net/SEO/9.html" target="_parent" class="nav_main nav5">代理加盟</a></li>
-				
-					
-					
-							<li class="nav_child"><a href="http://www.yunwuxian.net/SEO/8.html" target="_parent" class="nav_main nav6">人才招聘</a></li>
-				
-					
-					
-							<li class="nav_child"><a href="http://www.yunwuxian.net/SEO/7.html" target="_parent" class="nav_main nav7">关于我们</a></li>
-				
-					
-			
-			
-							<li class="nav_child"><a href="http://www.yunwuxian.net/SEO/6.html" target="_parent" class="nav_main nav8">联系我们</a></li>
-		
+						</ul>
+			      </div>
+				  <div class="clear"></div>
+				  <div class="subnav_wrap_shadow"></div>
+		    </div>
+		  </li>					
+		  <li class="nav_child"><a href="{:U('/webserver/')}" target="_parent" class="nav_main nav5">域名空间</a></li>
+		  <li class="nav_child"><a href="{:U('/news/')}" target="_parent" class="nav_main nav6">新闻资讯</a></li>
+		  <li class="nav_child"><a href="{:U('/about/')}" target="_parent" class="nav_main nav7">关于我们</a></li>
+		  <li class="nav_child"><a href="{:U('/contact/')}" target="_parent" class="nav_main nav8">联系我们</a></li>
 	</ul>
 </div>
 <!-- 一级栏目end -->
@@ -140,141 +96,45 @@ $(document).ready(function(){
  
 <div class="bot">Yunwuxian.Net北京云无限科技【京ICP备13010891号-3 京公网安备110105017764】 
 	电话：010-52430092 010-859165664 手机：18601360098
-<div id="tstart-toolbar-bottom">
-  <div id="qqmain">
-  
-<div class="kfmain">
-<div class="kfmain_2">
-<div class="kfmain_2_1">服务电话：010-53362051  技术电话：010-85916566</div>
-<div class="kfmain_3">
-<div class="kfmain_3_1"></div>
-<div class="kfmain_3_2">
-
-<div class="kfmainright">
-<table class="kftd" border="1" bordercolor="#CEEF9D" cellpadding="0" cellspacing="0" width="100%">
-  <tbody><tr>
-    <td></td>
-  </tr><tr>
-    <td style="text-align:left;padding-left:8px;"><a target="_blank" href="http://www.youhuafenxi.com/youhua/">百度快速前三业务</a></td>
-  </tr>
-  <tr>
-    <td style="text-align:left;padding-left:8px;"><a target="_blank" href="http://www.youhuafenxi.com/youhua/">百度快速首页业务</a></td>
-  </tr>
-  <tr>
-    <td style="text-align:left;padding-left:8px;"><a target="_blank" href="http://www.youhuafenxi.com/youhua/">整站优化业务</a></td>
-  </tr>
-  <tr>
-    <td style="text-align:left;padding-left:8px;"><a target="_blank" href="http://www.youhuafenxi.com/youhua/">360搜索、搜狗优化业务</a></td>
-  </tr>
-</tbody></table>
-			<div style="clear:both"></div>
+	<div id="tstart-toolbar-bottom">
+	  <div id="qqmain"> 
+		<div class="kfmain">
+			<div class="kfmain_2">
+				<div class="kfmain_2_1">服务电话：010-53362051  技术电话：010-85916566</div>
+				<div class="kfmain_3">
+					<div class="kfmain_3_1"></div>
+					<div class="kfmain_3_2">
+					
+						<div class="kfmainright">
+							<table class="kftd" border="1" bordercolor="#CEEF9D" cellpadding="0" cellspacing="0" width="100%">
+								  <tbody>
+								  <tr>
+								    <td></td>
+								  </tr>
+								  <tr>
+								    <td style="text-align:left;padding-left:8px;"><a target="_blank" href="http://www.youhuafenxi.com/youhua/">百度快速前三业务</a></td>
+								  </tr>
+								  <tr>
+								    <td style="text-align:left;padding-left:8px;"><a target="_blank" href="http://www.youhuafenxi.com/youhua/">百度快速首页业务</a></td>
+								  </tr>
+								  <tr>
+								    <td style="text-align:left;padding-left:8px;"><a target="_blank" href="http://www.youhuafenxi.com/youhua/">整站优化业务</a></td>
+								  </tr>
+								  <tr>
+								    <td style="text-align:left;padding-left:8px;"><a target="_blank" href="http://www.youhuafenxi.com/youhua/">360搜索、搜狗优化业务</a></td>
+								  </tr>
+								</tbody>
+							</table>
+							<div style="clear:both"></div>
+						</div>
+						<div class="kfmain_3_3"></div>
+					 </div>
+				 </div>
+			</div>
 		</div>
-		<div class="kfmain_3_3"></div>
-		</div>
+	  </div>
 	</div>
-	</div>
+	<div style="display:none">{$seo['web_code']}</div>
 </div>
-</div>
-
-
- 
-<script language="javascript" type="text/javascript"> 
-<!--//--><![CDATA[//><!--
-//图片滚动列表 mengjia 070816
-var Speed = 1; //速度(毫秒)
-var Space = 25; //每次移动(px)
-var PageWidth = 956; //翻页宽度
-var fill = 0; //整体移位
-var MoveLock = false;
-var MoveTimeObj;
-var Comp = 0;
-var AutoPlayObj = null;
-GetObj("List2").innerHTML = GetObj("List1").innerHTML;
-GetObj('ISL_Cont').scrollLeft = fill;
-GetObj("ISL_Cont").onmouseover = function(){clearInterval(AutoPlayObj);}
-GetObj("ISL_Cont").onmouseout = function(){AutoPlay();}
-AutoPlay();
-function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval
- 
-('document.all.'+objName)}}
-function AutoPlay(){ //自动滚动
-clearInterval(AutoPlayObj);
-AutoPlayObj = setInterval('ISL_GoDown();ISL_StopDown();',50000); //间隔时间
-}
-function ISL_GoUp(){ //上翻开始
-if(MoveLock) return;
-clearInterval(AutoPlayObj);
-MoveLock = true;
-MoveTimeObj = setInterval('ISL_ScrUp();',Speed);
-}
-function ISL_StopUp(){ //上翻停止
-clearInterval(MoveTimeObj);
-if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0){
-Comp = fill - (GetObj('ISL_Cont').scrollLeft % PageWidth);
-CompScr();
-}else{
-MoveLock = false;
-}
-AutoPlay();
-}
-function ISL_ScrUp(){ //上翻动作
-if(GetObj('ISL_Cont').scrollLeft <= 0){GetObj('ISL_Cont').scrollLeft = GetObj
- 
-('ISL_Cont').scrollLeft + GetObj('List1').offsetWidth}
-GetObj('ISL_Cont').scrollLeft -= Space ;
-}
-function ISL_GoDown(){ //下翻
-clearInterval(MoveTimeObj);
-if(MoveLock) return;
-clearInterval(AutoPlayObj);
-MoveLock = true;
-ISL_ScrDown();
-MoveTimeObj = setInterval('ISL_ScrDown()',Speed);
-}
-function ISL_StopDown(){ //下翻停止
-clearInterval(MoveTimeObj);
-if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0 ){
-Comp = PageWidth - GetObj('ISL_Cont').scrollLeft % PageWidth + fill;
-CompScr();
-}else{
-MoveLock = false;
-}
-AutoPlay();
-}
-function ISL_ScrDown(){ //下翻动作
-if(GetObj('ISL_Cont').scrollLeft >= GetObj('List1').scrollWidth){GetObj('ISL_Cont').scrollLeft =
- 
-GetObj('ISL_Cont').scrollLeft - GetObj('List1').scrollWidth;}
-GetObj('ISL_Cont').scrollLeft += Space ;
-}
-function CompScr(){
-var num;
-if(Comp == 0){MoveLock = false;return;}
-if(Comp < 0){ //上翻
-if(Comp < -Space){
-   Comp += Space;
-   num = Space;
-}else{
-   num = -Comp;
-   Comp = 0;
-}
-GetObj('ISL_Cont').scrollLeft -= num;
-setTimeout('CompScr()',Speed);
-}else{ //下翻
-if(Comp > Space){
-   Comp -= Space;
-   num = Space;
-}else{
-   num = Comp;
-   Comp = 0;
-}
-GetObj('ISL_Cont').scrollLeft += num;
-setTimeout('CompScr()',Speed);
-}
-}
-//--><!]]>
-</script>
-
-</div>
-
-</div></body></html>
+</body>
+</html>

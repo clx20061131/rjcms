@@ -325,3 +325,13 @@ function url_encode($str) {
  
  	return $str;
  }
+ /**
+  * 根据catid获取栏目信息
+  */
+ 	function getModelByCatId($catid){
+ 		
+ 		$Cate = M('category c');
+ 		$rst = $Cate->field('c.*,m.title,m.mtable')->join('rj_model m on c.mid = m.mid ')->where('c.catid = '.$catid)->find();
+ 		
+ 		 return $rst;
+ 	}

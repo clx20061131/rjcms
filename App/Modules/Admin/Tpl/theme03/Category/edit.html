@@ -81,15 +81,26 @@
 							   </td>							  
 							</tr>	
 							<tr>
-							  <td>模版</td>
+							  <td>列表模版</td>
 							  <td class="tal bdrn">
 							      
-							       <input type="text" name="tpl" value="" class="input input-350" >
+							       <input type="text" name="tpl_list" value="{$info.tpl_list}" class="input input-350" >
 							   </td> 
 							   <td class="bdln bdrn">
 							          <span class="tip-info Validform_checktip">content文件下的不带后缀的文件名eg:index</span>
 							   </td>							  
 							</tr>	
+							<tr>
+							  <td>内容模版</td>
+							  <td class="tal bdrn">
+							      
+							       <input type="text" name="tpl_show" value="{$info.tpl_show}" class="input input-350" >
+							   </td> 
+							   <td class="bdln bdrn">
+							          <span class="tip-info Validform_checktip">content文件下的不带后缀的文件名eg:index</span>
+							   </td>							  
+							</tr>	
+							
 							<tr>
 							  <td colspan="3" class="tac">
 							    <present name="info"> <input type="hidden" name="catid" value="{$info.catid}"></present>

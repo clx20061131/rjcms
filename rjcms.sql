@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-04-13 11:18:04
+-- Generation Time: 2015-05-09 08:42:35
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `rj_admin` (
 --
 
 INSERT INTO `rj_admin` (`id`, `uname`, `unick`, `upass`, `roleid`, `last_login_time`, `last_login_ip`, `total_login_num`, `create_time`, `status`) VALUES
-(1, 'admin', '超级管理员', '21232f297a57a5a743894a0e4a801fc3', 1, 1428715241, '127.0.0.1', 29, 1, 1);
+(1, 'admin', '超级管理员', '21232f297a57a5a743894a0e4a801fc3', 1, 1431150276, '127.0.0.1', 33, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `rj_artic` (
   `views` int(10) unsigned NOT NULL DEFAULT '0',
   `listorder` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
 
 --
 -- 转存表中的数据 `rj_artic`
@@ -137,7 +137,9 @@ INSERT INTO `rj_artic` (`id`, `catid`, `title`, `keywords`, `description`, `imag
 (2, 9, '电影娱乐新闻', '电影娱乐新闻', '电影娱乐新闻', '/rjcms/static/Public/plugins/kindeditor-4.1.10/attached/image/20150413/20150413031110_79834.jpg', '电影娱乐新闻电影娱乐新闻', '', 1428887472, 1428887472, 1, 0, 2),
 (3, 4, '我是美国新闻', '我是美国新闻', '我是美国新闻', '', '我是美国新闻', '', 1428889742, 1428889742, 2, 0, 1),
 (5, 9, '娱乐新闻2', '娱乐新闻2', '娱乐新闻2', '', '娱乐新闻2', '', 1428902120, 1428902120, 1, 0, 4),
-(6, 9, '娱乐新问3', '娱乐新问3', '娱乐新问3', '', '娱乐新问3', '', 1428902236, 1428902236, 1, 0, 1);
+(6, 9, '娱乐新问3', '娱乐新问3', '娱乐新问3', '', '娱乐新问3', '', 1428902236, 1428902236, 1, 0, 1),
+(7, 12, '空间选择', '', '', '', '不选贵的，选择合适的 <br />', '', 1431150864, 1431150864, 1, 0, 5),
+(8, 12, '域名选则', '', '', '', '简单，容易理解', '', 1431150916, 1431150916, 1, 0, 6);
 
 -- --------------------------------------------------------
 
@@ -156,21 +158,21 @@ CREATE TABLE IF NOT EXISTS `rj_category` (
   `listorder` int(10) unsigned DEFAULT NULL COMMENT '排序',
   `keywords` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '栏目连接key',
   `mid` tinyint(4) DEFAULT NULL COMMENT '模型id',
+  `tpl_list` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '模版名称',
+  `tpl_show` varchar(100) COLLATE utf8_bin NOT NULL COMMENT '内容模版',
   PRIMARY KEY (`catid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=14 ;
 
 --
 -- 转存表中的数据 `rj_category`
 --
 
-INSERT INTO `rj_category` (`catid`, `catname`, `pid`, `sort_id`, `image`, `description`, `seting`, `listorder`, `keywords`, `mid`) VALUES
-(1, '新闻中心', 0, 1, '', '', NULL, 2, 'news', 2),
-(2, '军事新闻', 1, 1, '', '', NULL, 1, 'news/junshi', 2),
-(5, '国际新闻', 1, 1, '', '', NULL, 2, 'news/guoji', 2),
-(4, '美国新闻', 5, 1, '', '', NULL, 3, 'news/meiguo', 2),
-(8, '娱乐新闻', 1, NULL, '', '娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻娱乐新闻', NULL, 6, 'news/star', 2),
-(9, '电影娱乐', 8, NULL, '', '电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐电影娱乐', NULL, 7, 'news/happy', 2),
-(10, '关于我们', 0, NULL, '', '', NULL, 8, 'about', 1);
+INSERT INTO `rj_category` (`catid`, `catname`, `pid`, `sort_id`, `image`, `description`, `seting`, `listorder`, `keywords`, `mid`, `tpl_list`, `tpl_show`) VALUES
+(1, '新闻中心', 0, 1, '', '', NULL, 2, 'news/index', 2, 'news', 'news'),
+(11, '联系我们', 0, NULL, '', '', NULL, 9, 'contact/index', 1, 'page', ''),
+(12, '域名空间', 0, NULL, '', '', NULL, 10, 'webserver/index', 2, 'webserver', 'webserver'),
+(13, '网站建设', 0, NULL, '', '', NULL, 11, 'web/index', 2, 'webbuild', 'webbuild'),
+(10, '关于我们', 0, NULL, '', '', NULL, 8, 'about/index', 1, 'page', '');
 
 -- --------------------------------------------------------
 
@@ -309,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `rj_web` (
 --
 
 INSERT INTO `rj_web` (`id`, `title`, `key_word`, `description`, `web_code`) VALUES
-(1, '百度', '百度搜索', '百度一下你就知道', '<script>alert(''test'')</script>');
+(1, '百度', '百度搜索', '百度一下你就知道', '<script></script>');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

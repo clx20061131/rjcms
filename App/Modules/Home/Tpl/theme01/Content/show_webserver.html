@@ -1,0 +1,29 @@
+<layout name="layout" />
+<div class="banner_aboutcsii"><p></p></div>
+<div class="content">
+	<div class="submenu">
+	  <ul>	
+	        <clx:content table="artic" where="catid = 12">
+	        <li><a target="_parent" href="{:U('webserver/show',array('catid'=>$val['catid'],'id'=>$val['id']))}">{$val['title']}</a></li>
+		    </clx:content>
+	   </ul>
+	 </div> 
+     <div class="mainbox">
+		 <div class="maintitle">		 
+         <h3 style="text-align:left; text-indent:24px;">
+			网站空间&gt; {$info['title']}		
+		   <label><a href="javascript:history.back()">返回</a></label>
+		  </h3>
+   		</div>
+		<div class="jobs_detail">
+			<h2>{$info['title']}</h2>
+	
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+			<p>
+			<font color="#ff0000"><b>{$info['title']}</b></font>
+			<br>
+			<br>
+			   {$info['content']}
+		</div>
+	</div>
+</div>
